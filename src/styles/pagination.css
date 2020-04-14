@@ -1,0 +1,70 @@
+.paging-container {
+  margin: 40px 0 0;
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paging-container--central {
+  justify-content: center;
+}
+
+.paging-container a:after {
+  display: none;
+}
+
+.paging-controls {
+  width: 45%;
+}
+@media screen and (min-width: 800px) {
+  .paging-controls {
+    width: 150px;
+  }
+}
+
+.paging-links {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  .paging-links {
+    display: block;
+    flex-grow: 1;
+    padding: 0 20px;
+    text-align: center;
+  }
+}
+
+.paging-links a,
+.paging-links span {
+  padding: 10px;
+  min-width: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+.paging-button {
+  display: block;
+  text-align: center;
+  padding: 8px 10px 5px;
+  background: #ffffff;
+  box-shadow: 6px 6px 6px 0px rgba(0, 0, 0, 0.5);
+  border: 1px solid #ededed;
+  transition: background 0.25s ease-in-out, color 0.25s ease-in-out,
+    box-shadow 0.25s ease-in-out, border-color 0.25s ease-in-out;
+}
+
+.paging-button:hover {
+  background: #335aab;
+  border-color: #335aab;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.paging-button:focus {
+  background: #335aab;
+  color: #fff;
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+}

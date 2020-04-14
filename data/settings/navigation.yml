@@ -1,0 +1,11 @@
+nav_items:
+  - label: About
+    path: /about/
+  - label: Links
+    path: /links/
+  - label: Writing
+    path: /writing/
+  - label: Photography
+    path: /photography/
+  - label: Setup
+    path: /setup/

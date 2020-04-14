@@ -1,0 +1,141 @@
+.hero {
+  position: relative;
+  width: 100%;
+  margin: 0px 0 20px;
+}
+@media screen and (min-width: 800px) {
+  .hero {
+    min-height: calc(100vh - 200px);
+    position: relative;
+    width: 100%;
+    margin: 0px 0 120px;
+  }
+}
+@media screen and (min-height: 800px) and (min-width: 800px) {
+  .hero {
+    min-height: 800px;
+  }
+}
+
+.hero--noimg {
+  min-height: 0px;
+}
+
+@media screen and (min-width: 800px) {
+  .hero--noimg {
+    padding: 40px 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .hero__inner {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero--noimg .hero__inner {
+    align-items: center;
+    text-align: center;
+  }
+}
+@media screen and (min-height: 800px) and (min-width: 800px) {
+  .hero__inner {
+    min-height: 800px;
+  }
+}
+
+.hero--noimg .hero__inner {
+  min-height: 0px;
+}
+
+.hero__title {
+  font-size: 3rem;
+  line-height: 1em;
+  letter-spacing: -2px;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
+  max-width: 1000px;
+}
+@media screen and (min-width: 800px) {
+  .hero__title {
+    font-size: 4rem;
+    line-height: 1em;
+    letter-spacing: -2px;
+    margin: -100px 0 0;
+    margin: 0;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
+    max-width: 760px;
+  }
+
+  .hero--noimg .hero__title {
+    max-width: 1000px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .hero__title {
+    font-size: 6rem;
+  }
+}
+
+.hero__title span {
+  position: relative;
+  display: inline-block;
+}
+
+.hero__title span:before {
+  background: #fff;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -10px;
+  content: "";
+  z-index: -1;
+}
+@media screen and (min-width: 800px) {
+  .hero__title span:before {
+    top: -30px;
+    left: -30px;
+    right: -30px;
+  }
+}
+
+.hero__title small {
+  font-size: 0.5em;
+}
+
+.hero__image {
+  display: none;
+}
+@media screen and (min-width: 800px) {
+  .hero__image {
+    display: block;
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+    z-index: -2;
+  }
+}
+
+.hero__image .gatsby-image-wrapper {
+  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.hero__description {
+  margin: 3rem 0 80px;
+  line-height: 1.5em;
+}
+@media screen and (min-width: 800px) {
+  .hero__description {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 -40px;
+    max-width: 40%;
+  }
+
+  .hero--noimg .hero__description {
+    max-width: 500px;
+  }
+}

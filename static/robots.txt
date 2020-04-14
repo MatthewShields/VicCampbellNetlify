@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: */tags/
+Disallow: */categories/
+
+sitemap: https://matthewshields.co.uk/sitemap.xml

@@ -1,0 +1,135 @@
+backend:
+  name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
+  branch: pre-production # Branch to update
+  repo: MatthewShields/matthewshields.co.uk # Repo for pushing new commits. Make sure to replace with your repo!
+
+media_folder: static/assets
+public_folder: assets
+publish_mode: editorial_workflow
+
+collections:
+  - name: blog
+    label: "Post"
+    folder: "content/writing"
+    media_folder: ''
+    public_folder: ''
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - { label: "post_type", name: "post_type", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "short_description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "cover", widget: "image", required: false }
+      - { label: "Social Image", name: "social_image", widget: "image", required: false }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: pages
+    label: "Page"
+    folder: "content/pages"
+    media_folder: ''
+    public_folder: ''
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - { label: "post_type", name: "post_type", widget: "hidden", default: "page" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "short_description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "cover", widget: "image", required: false }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - label: 'Page Section'
+        name: 'sections'
+        widget: 'list'
+        types:
+          - label: 'Text Block'
+            name: 'text_block'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: markdown }
+          - label: 'Carousel'
+            name: 'carousel'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: markdown }
+              - label: 'Images'
+                name: images
+                widget: list
+                fields:
+                  - { label: "Image", name: "image", widget: "image", required: false }
+                  - { label: Image Description, name: alt, widget: string }
+          - label: 'Block List'
+            name: 'block_list'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - { label: Text, name: text, widget: markdown, required: false }
+              - label: 'Blocks'
+                name: blocks
+                widget: list
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Text, name: text, widget: markdown }
+                  - label: 'Footer List'
+                    name: footer_list
+                    widget: list
+                    fields:
+                      - { label: Label, name: label, widget: string }
+                      - { label: Value, name: value, widget: string }
+  - name: photography
+    label: "Photography"
+    folder: "content/photography"
+    media_folder: ''
+    public_folder: ''
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - { label: "post_type", name: "post_type", widget: "hidden", default: "photography" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Cover Images", name: "cover_images", widget: list, fields: [ {label: Photo, name: photo, widget: image}, {label: Image Description, name: alt, widget: string} ] }
+      - { label: "Images", name: "images", widget: list, fields: [ {label: Photo, name: photo, widget: image}, {label: Image Description, name: alt, widget: string} ] }
+  - name: project
+    label: "Project"
+    folder: "content/project"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - { label: "post_type", name: "post_type", widget: "hidden", default: "project" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "description", name: "description", widget: "markdown" }
+      - label: Options
+        name: options
+        widget: list
+        fields:
+          - {label: Label, name: label, widget: string}
+          - {label: Value, name: value, widget: string}
+  - name: links
+    label: "Links"
+    folder: "content/links"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    fields:
+      - { label: "post_type", name: "post_type", widget: "hidden", default: "links" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Link URL", name: "link_url", widget: "string" }
+      - { label: "Short Description", name: "short_description", widget: "markdown" }
+  - name: settings
+    label: Settings
+    files:
+      - file: data/settings/navigation.yml
+        label: Navigation
+        name: navigation
+        fields:
+          - label: Navigation
+            name: nav_items
+            widget: list
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Path, name: path, widget: string}

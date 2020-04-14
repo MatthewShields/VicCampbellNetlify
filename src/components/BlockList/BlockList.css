@@ -1,0 +1,30 @@
+.options-list {
+  font-size: 1.1rem;
+  border-top: 1px #ccc solid;
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 20px 0 0;
+}
+
+.options-list li {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .options-list li {
+    display: flex;
+  }
+}
+
+.options-list__label {
+  font-weight: 700;
+  display: block;
+}
+
+@media screen and (min-width: 800px) {
+  .options-list__label {
+    width: 200px;
+    font-weight: 700;
+  }
+}

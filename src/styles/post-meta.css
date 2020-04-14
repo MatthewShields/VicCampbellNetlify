@@ -1,0 +1,15 @@
+.post-meta {
+  font-size: smaller;
+  color: #565656;
+}
+
+@media screen and (min-width: 600px) {
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.post-meta p {
+  margin: 0;
+}

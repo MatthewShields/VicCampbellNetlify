@@ -1,0 +1,20 @@
+.shadow-block {
+  background: #ffffff;
+  filter: drop-shadow(6px 6px 6px rgba(0, 0, 0, 0.5));
+  padding: 30px;
+  margin: 40px 0 0;
+  position: relative;
+}
+
+.shadow-block__title {
+  margin: 0 0 10px;
+}
+
+.shadow-block__title a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
