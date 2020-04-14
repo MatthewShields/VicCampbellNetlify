@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
   const pagePage = path.resolve("src/templates/page.jsx");
-  const albumPage = path.resolve("src/templates/album.jsx");
+  const productPage = path.resolve("src/templates/product.jsx");
   const listingPage = path.resolve("./src/templates/listing.jsx");
 
   // Get a full list of markdown posts
@@ -193,21 +193,24 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  var photographyEdges = allPosts.filter(function(post) {
-    return post.node.frontmatter.post_type === 'photography';
+
+  var productEdges = allPosts.filter(function(post) {
+    return post.node.frontmatter.post_type === 'product';
   });
-  // Photography pages creating
-  photographyEdges.forEach((edge, index) => {
+
+  // Post page creating
+  productEdges.forEach((edge, index) => {
+    console.log('creating a product page');
 
     // Create post pages
-    const nextID = index + 1 < photographyEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : photographyEdges.length - 1;
-    const nextEdge = photographyEdges[nextID];
-    const prevEdge = photographyEdges[prevID];
+    const nextID = index + 1 < productEdges.length ? index + 1 : 0;
+    const prevID = index - 1 >= 0 ? index - 1 : productEdges.length - 1;
+    const nextEdge = productEdges[nextID];
+    const prevEdge = productEdges[prevID];
 
     createPage({
       path: edge.node.fields.slug,
-      component: albumPage,
+      component: productPage,
       context: {
         slug: edge.node.fields.slug,
         nexttitle: nextEdge.node.frontmatter.title,
@@ -277,8 +280,16 @@ exports.createSchemaCustomization = ({ actions }) => {
       blocks: [BlockList]
     }
 
+    type Sizes {
+      image: File
+      price: String
+      size: String
+    }
+
     type MarkdownRemarkFrontmatter implements Node {
       sections: [Sections]
+      sizes: [Sizes]
+      social_image: File
     }
 
   `
