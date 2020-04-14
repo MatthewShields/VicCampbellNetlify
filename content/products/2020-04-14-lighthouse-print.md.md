@@ -1,5 +1,5 @@
 ---
-post_type: page
+post_type: product
 title: Lighthouse Print
 short_description: >-
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
