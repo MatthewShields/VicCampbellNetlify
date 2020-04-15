@@ -10,6 +10,9 @@ sizes:
   - image: st-paul-blizzard.jpg
     size: 8x10
     price: '4000'
+  - image: st-paul-blizzard.jpg
+    size: 10x14
+    price: '5000'
 sections:
   - type: text_block
     title: >-
