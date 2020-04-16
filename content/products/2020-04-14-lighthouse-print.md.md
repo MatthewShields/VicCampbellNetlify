@@ -8,6 +8,7 @@ short_description: >-
 category:
   - black and white
   - lighthouse
+image: st-paul-blizzard.jpg
 slug: lighthouse-print
 sizes:
   - image: st-paul-blizzard.jpg
