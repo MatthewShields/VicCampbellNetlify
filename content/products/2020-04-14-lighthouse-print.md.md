@@ -6,7 +6,7 @@ short_description: >-
   veritatis beatae ullam quas repellendus praesentium corporis deserunt ab porro
   alias debitis voluptatum, dignissimos adipisci, dolor laborum minus hic!
 category:
-  - black and white
+  - Black and White
   - lighthouse
 image: st-paul-blizzard.jpg
 slug: lighthouse-print
