@@ -281,7 +281,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Sizes {
-      image: File
       price: String
       size: String
     }

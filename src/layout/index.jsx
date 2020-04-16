@@ -4,6 +4,7 @@ import config from "../../data/SiteConfig";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import "./index.css";
+import '../styles/main.css';
 
 export default class MainLayout extends React.Component {
   render() {
@@ -11,7 +12,7 @@ export default class MainLayout extends React.Component {
     return (
       <div className="wrapper">
         <Header config={config} homepage={true} />
-        <div className="layout-container">
+        <div className="container mx-auto pt-6">
           <Helmet>
             <meta name="description" content={config.siteDescription} />
             <html lang="en" />

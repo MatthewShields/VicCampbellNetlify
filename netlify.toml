@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "cd functions && npm i && cd .. && gatsby build"
+  command = "npm run watch:css && cd functions && npm i && cd .. && gatsby build"
   functions = "functions"
 [build.environment]
   NODE_VERSION = "12.13.0"

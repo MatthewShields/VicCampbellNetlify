@@ -37,38 +37,29 @@ class Header extends Component {
   render() {
     const { config } = this.props;
     const url = config.siteRss;
-
-    let logo_classes = 'header__title';
-
-    // if(this.props.homepage !== true) {
-    //   logo_classes = 'header__title';
-    // } else {
-    //   logo_classes = 'header__title header__title--hidden';
-    // }
-
-    let headerClass = '';
+    let headerClass = 'mb-6 bg-white';
     let buttonText = 'Open Menu';
 
     if(this.state.menuOpen === true) {
-      headerClass = 'menu--open';
+      headerClass += ' menu--open';
       buttonText = 'Close Menu';
 
     }
     
     return (
       <Headroom className={headerClass}>
-        <header className="header">
-          <h1 className={logo_classes}>
+        <header className="py-3 bg-white shadow-xl	">
+          <h1 className="text-center text-4xl">
             <Link to="/">
-                <img src={yourSVG} alt="Matthew Shields Logo" />
+              Victoria Campbell
             </Link>
           </h1>
           <nav>
-            <button className="menu-button" onClick={this.toggle_menu}>{buttonText}</button>
-            <ul className="main-nav">
+            <button className="md:hidden" onClick={this.toggle_menu}>{buttonText}</button>
+            <ul className="main-nav flex justify-center">
               {YAMLData.nav_items.map((data, index) => {
                 return (
-                  <li key={`content_item_${index}`} className="main-nav__item">
+                  <li key={`content_item_${index}`} className="m-4">
                     <Link onClick={this.restore_body} to={data.path}>
                       {data.label}
                     </Link>

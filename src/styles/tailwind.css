@@ -1,0 +1,21 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+h2 {
+    @apply text-xl;
+    @apply font-bold;
+    @apply mb-4;
+    @apply mt-10;
+}
+
+p {
+    @apply mb-6;
+}
+
+.block-item p:last-of-type {
+    @apply mb-0;
+}
