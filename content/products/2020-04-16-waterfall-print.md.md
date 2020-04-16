@@ -6,7 +6,8 @@ short_description: >-
   veritatis beatae ullam quas repellendus praesentium corporis deserunt ab porro
   alias debitis voluptatum, dignissimos adipisci, dolor laborum minus hic!
 category:
-  - nature
+  - Nature
+  - Black and White
 image: img_7455.jpg
 slug: waterfall-print
 sizes:
