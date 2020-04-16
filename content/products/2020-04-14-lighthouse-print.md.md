@@ -5,6 +5,9 @@ short_description: >-
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
   veritatis beatae ullam quas repellendus praesentium corporis deserunt ab porro
   alias debitis voluptatum, dignissimos adipisci, dolor laborum minus hic!
+category:
+  - black and white
+  - lighthouse
 slug: lighthouse-print
 sizes:
   - image: st-paul-blizzard.jpg
