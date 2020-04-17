@@ -82,77 +82,77 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allPosts = markdownQueryResult.data.allMarkdownRemark.edges;
 
-  var postsEdges = allPosts.filter(function(post) {
-    return post.node.frontmatter.post_type === 'post';
-  });
+  // var postsEdges = allPosts.filter(function(post) {
+  //   return post.node.frontmatter.post_type === 'post';
+  // });
 
-  // Sort posts
-  postsEdges.sort((postA, postB) => {
-    const dateA = moment(
-      postA.node.frontmatter.date,
-      siteConfig.dateFromFormat
-    );
+  // // Sort posts
+  // postsEdges.sort((postA, postB) => {
+  //   const dateA = moment(
+  //     postA.node.frontmatter.date,
+  //     siteConfig.dateFromFormat
+  //   );
 
-    const dateB = moment(
-      postB.node.frontmatter.date,
-      siteConfig.dateFromFormat
-    );
+  //   const dateB = moment(
+  //     postB.node.frontmatter.date,
+  //     siteConfig.dateFromFormat
+  //   );
 
-    if (dateA.isBefore(dateB)) return 1;
-    if (dateB.isBefore(dateA)) return -1;
+  //   if (dateA.isBefore(dateB)) return 1;
+  //   if (dateB.isBefore(dateA)) return -1;
 
-    return 0;
-  });
+  //   return 0;
+  // });
 
-  // Paging
-  const { postsPerPage } = siteConfig;
-  const pageCount = Math.ceil(postsEdges.length / postsPerPage);
+  // // Paging
+  // const { postsPerPage } = siteConfig;
+  // const pageCount = Math.ceil(postsEdges.length / postsPerPage);
 
-  [...Array(pageCount)].forEach((_val, pageNum) => {
-    createPage({
-      path: pageNum === 0 ? `/writing/` : `/writing/${pageNum + 1}/`,
-      component: listingPage,
-      context: {
-        limit: postsPerPage,
-        skip: pageNum * postsPerPage,
-        pageCount,
-        currentPageNum: pageNum + 1
-      }
-    });
-  });
+  // [...Array(pageCount)].forEach((_val, pageNum) => {
+  //   createPage({
+  //     path: pageNum === 0 ? `/writing/` : `/writing/${pageNum + 1}/`,
+  //     component: listingPage,
+  //     context: {
+  //       limit: postsPerPage,
+  //       skip: pageNum * postsPerPage,
+  //       pageCount,
+  //       currentPageNum: pageNum + 1
+  //     }
+  //   });
+  // });
 
-  // Post page creating
-  postsEdges.forEach((edge, index) => {
-    // Generate a list of tags
-    if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.forEach(tag => {
-        tagSet.add(tag);
-      });
-    }
+  // // Post page creating
+  // postsEdges.forEach((edge, index) => {
+  //   // Generate a list of tags
+  //   if (edge.node.frontmatter.tags) {
+  //     edge.node.frontmatter.tags.forEach(tag => {
+  //       tagSet.add(tag);
+  //     });
+  //   }
 
-    // Generate a list of categories
-    if (edge.node.frontmatter.category) {
-      categorySet.add(edge.node.frontmatter.category);
-    }
+  //   // Generate a list of categories
+  //   if (edge.node.frontmatter.category) {
+  //     categorySet.add(edge.node.frontmatter.category);
+  //   }
 
-    // Create post pages
-    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    const nextEdge = postsEdges[nextID];
-    const prevEdge = postsEdges[prevID];
+  //   // Create post pages
+  //   const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
+  //   const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
+  //   const nextEdge = postsEdges[nextID];
+  //   const prevEdge = postsEdges[prevID];
 
-    createPage({
-      path: edge.node.fields.slug,
-      component: postPage,
-      context: {
-        slug: edge.node.fields.slug,
-        nexttitle: nextEdge.node.frontmatter.title,
-        nextslug: nextEdge.node.fields.slug,
-        prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug
-      }
-    });
-  });
+  //   createPage({
+  //     path: edge.node.fields.slug,
+  //     component: postPage,
+  //     context: {
+  //       slug: edge.node.fields.slug,
+  //       nexttitle: nextEdge.node.frontmatter.title,
+  //       nextslug: nextEdge.node.fields.slug,
+  //       prevtitle: prevEdge.node.frontmatter.title,
+  //       prevslug: prevEdge.node.fields.slug
+  //     }
+  //   });
+  // });
 
   var pageEdges = allPosts.filter(function(post) {
     return post.node.frontmatter.post_type === 'page';
