@@ -1,7 +1,11 @@
 ---
 post_type: product
 title: St. Paul Blizzard
-short_description: 'Snowy scene in Minnesota’s capital city, St. Paul.'
+short_description: >-
+  Snowy scene in Minnesota’s capital city, St. Paul. Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit. At culpa nulla veritatis beatae ullam quas
+  repellendus praesentium corporis deserunt ab porro alias debitis voluptatum,
+  dignissimos adipisci, dolor laborum minus hic!
 category:
   - Minnesota
 image: st-paul-blizzard.jpg
