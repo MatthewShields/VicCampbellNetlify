@@ -10,11 +10,11 @@ function extract_price_range(sizes) {
     };
 
     sizes.forEach((size) => {
-      if(size.price < priceData.low || priceData.low === false) {
-        priceData.low = size.price;
+      if(priceData.low === false || parseInt(size.price, 10) < priceData.low ) {
+        priceData.low = parseInt(size.price);
       }
-      if(size.price > priceData.high || priceData.high === false) {
-        priceData.high = size.price;
+      if(priceData.high === false || parseInt(size.price) > priceData.high) {
+        priceData.high = parseInt(size.price);
       }
     });
 
@@ -36,7 +36,7 @@ class StoreListing extends React.Component {
             {this.props.title &&
               <h3 className="mb-4 text-2xl text-center">{this.props.title}</h3>
             }
-            <div className={`grid md:grid-cols-3 gap-12 invisible grid-hover`}>
+            <div className={`grid md:grid-cols-3 gap-6 lg:gap-12 invisible grid-hover`}>
               {products.map((product) => (
                 <div className="transition-opacity duration-500">
                   <Link to={`/print-store${product.node.fields.slug}`} className="text-center visible">

@@ -8,7 +8,7 @@ class Footer extends Component {
     const { config } = this.props;
     const url = config.siteRss;
     return (
-      <footer aria-label="Main footer" className="text-center mb-8">
+      <footer aria-label="Main footer" className="text-center mt-12 mb-8">
         <p className="text-center uppercase text-sm">
           <a href="mailto:victoriajscampbell@gmail.com" className="hover:underline">victoriajscampbell@gmail.com</a>
         </p>

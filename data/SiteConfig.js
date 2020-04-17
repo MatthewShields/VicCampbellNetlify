@@ -23,28 +23,16 @@ const config = {
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
   userLinks: [
     {
-      label: "Codepen",
+      label: "Instagram",
       url: "https://codepen.io/MatthewShields/",
       target: "_blank",
       image: 'instagram'
     },
     {
-      label: "GitHub",
+      label: "Facebook",
       url: "https://github.com/MatthewShields",
       target: "_blank",
-      image: 'instagram'
-    },
-    {
-      label: "Twitter",
-      url: "https://twitter.com/whatsthatweasel",
-      target: "_blank",
-      image: 'instagram'
-    },
-    {
-      label: "Email",
-      url: "mailto:info@matthewshields.co.uk",
-      target: "_self",
-      image: 'instagram'
+      image: 'facebook'
     }
   ],
   copyright: "Copyright © 2020 Matthew Shields", // Copyright string for the footer of the website and RSS feed.

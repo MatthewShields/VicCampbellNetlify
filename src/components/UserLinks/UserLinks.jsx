@@ -6,8 +6,8 @@ class UserLinks extends Component {
     const { userLinks } = this.props.config;
     const { labeled } = this.props;
     return userLinks.map(link => (
-      <a key={link.url} href={link.url} target={link.target} className="m-2 inline-block">
-        <img src={`/theme_images/${link.image}.svg`} alt="" className="w-8 h-8 inline-block" />
+      <a key={link.url} href={link.url} target={link.target} className="m-4 inline-block">
+        <img src={`/theme_images/${link.image}.svg`} alt="" className="w-6 h-6 inline-block" />
       </a>
     ));
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../layout";
 import SEO from "../components/SEO/SEO";
 import FlexibleContent from "../components/FlexibleContent/FlexibleContent";
@@ -30,6 +30,29 @@ const firepurchase = async (image, name, description, amount, quantity) => {
     sessionId: response.sessionId,
   });
 };
+
+
+function price_range_data(sizes) {
+  if (sizes && sizes.length > 0) {
+    let priceData = {
+      low: false,
+      high: false,
+    };
+
+    sizes.forEach((size) => {
+      if(priceData.low === false || parseInt(size.price, 10) < priceData.low ) {
+        priceData.low = parseInt(size.price);
+      }
+      if(priceData.high === false || parseInt(size.price) > priceData.high) {
+        priceData.high = parseInt(size.price);
+      }
+    });
+
+    return priceData;
+  } else {
+    return false;
+  }
+}
 
 export default class PostTemplate extends React.Component {
   constructor(props) {
@@ -77,9 +100,17 @@ export default class PostTemplate extends React.Component {
         }
       });
       if (image_found === false) {
-        return <Img fluid={sizes[0].image.childImageSharp.fluid} />;
+        if(sizes[0].image) {
+          return <Img fluid={sizes[0].image.childImageSharp.fluid} />;
+        } else {
+          return false;
+        }
       } else {
-        return <Img fluid={image_found.image.childImageSharp.fluid} />;
+        if(image_found.image) {
+          return <Img fluid={image_found.image.childImageSharp.fluid} />;
+        } else {
+          return false;
+        }
       }
     }
   }
@@ -104,10 +135,13 @@ export default class PostTemplate extends React.Component {
     const { data, pageContext } = this.props;
     console.log(data);
     console.log(pageContext);
-    const { slug } = pageContext;
+    const { slug, category } = pageContext;
     const postNode = data.markdownRemark;
     const relatedProducts = data.relatedProducts.edges;
     const post = postNode.frontmatter;
+
+    const priceData = price_range_data(post.sizes);
+    console.log(priceData);
 
     return (
       <Layout>
@@ -194,7 +228,7 @@ export default class PostTemplate extends React.Component {
           <div className="max-w-screen-md mx-auto my-12">
             <FlexibleContent sections={postNode.frontmatter.sections} />
           </div>
-          <StoreListing title="For your consideration" size="lg" products={relatedProducts} />
+          <StoreListing title={`Other ${category.join(' and ')} Prints`} size="lg" products={relatedProducts} />
         </div>
       </Layout>
     );
