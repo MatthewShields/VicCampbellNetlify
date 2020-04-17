@@ -8,6 +8,7 @@ short_description: >-
   dignissimos adipisci, dolor laborum minus hic!
 category:
   - Travel
+  - Wildlife
 image: bison-on-the-plains.jpg
 slug: bison-on-the-plains
 sizes:

@@ -8,6 +8,7 @@ short_description: >-
   dignissimos adipisci, dolor laborum minus hic!
 category:
   - England
+  - Wildlife
 image: morning-deer.jpg
 slug: morning-deer
 sizes:

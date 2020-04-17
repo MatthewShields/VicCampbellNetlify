@@ -8,6 +8,7 @@ short_description: >-
   dignissimos adipisci, dolor laborum minus hic!
 category:
   - Travel
+  - Wildlife
 image: wild-icelandic-horses.jpg
 slug: wild-icelandic-horses
 sizes:

@@ -8,6 +8,7 @@ short_description: >-
   dignissimos adipisci, dolor laborum minus hic!
 category:
   - Travel
+  - Wildlife
 image: south-dakota-buffalo.jpg
 slug: south-dakota-buffalo
 sizes:

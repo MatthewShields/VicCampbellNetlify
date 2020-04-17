@@ -8,6 +8,7 @@ short_description: >-
   dignissimos adipisci, dolor laborum minus hic!
 category:
   - England
+  - Wildlife
 image: cheeky-cow.jpg
 slug: cheeky-cow
 sizes:
