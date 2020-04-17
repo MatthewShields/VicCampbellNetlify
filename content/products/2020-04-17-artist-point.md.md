@@ -8,6 +8,7 @@ short_description: >-
   dignissimos adipisci, dolor laborum minus hic!
 category:
   - Minnesota
+  - Landscape
 image: artist-point.jpg
 slug: artist-point
 sizes:
