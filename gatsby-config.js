@@ -48,13 +48,6 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "posts",
-        path: `${__dirname}/content/writing/`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
         name: "pages",
         path: `${__dirname}/content/pages/`
       }
@@ -64,27 +57,6 @@ module.exports = {
       options: {
         name: "products",
         path: `${__dirname}/content/products/`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "photography",
-        path: `${__dirname}/content/photography/`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "project",
-        path: `${__dirname}/content/project/`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "links",
-        path: `${__dirname}/content/links/`
       }
     },
     {
