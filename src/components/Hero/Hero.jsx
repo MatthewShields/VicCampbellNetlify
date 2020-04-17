@@ -26,22 +26,11 @@ class Hero extends React.Component {
 
     return (
       <div className={hero_class}>
-        <div className="hero__inner">
+        <div className="mx-auto text-center my-8">
           <h1
             className="hero__title hero__title--post"
             dangerouslySetInnerHTML={createMarkup(this.props.title)}
           />
-          <div className="hero__description">
-            {format_paras(this.props.description)}
-            {(this.props.date || this.props.readingTime) && (
-              <footer aria-label="Post date" className="post-meta">
-                {this.props.date && <p>{format_date(this.props.date)}</p>}
-                {this.props.readingTime && (
-                  <p>(Reading time: {this.props.readingTime} minutes)</p>
-                )}
-              </footer>
-            )}
-          </div>
         </div>
         {image_fluid && (
           <div className="hero__image">

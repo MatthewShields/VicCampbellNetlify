@@ -64,6 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
               post_type
               title
               date
+              category
             }
           }
         }
@@ -193,9 +194,34 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  const store = path.resolve("./src/templates/store.jsx");
+  const storeCategory = path.resolve("./src/templates/store-category.jsx");
+  const storeCategorySet = new Set();
 
   var productEdges = allPosts.filter(function(post) {
     return post.node.frontmatter.post_type === 'product';
+  });
+
+  // Post page creating
+  productEdges.forEach((edge, index) => {
+    console.log(edge);
+    if (edge.node.frontmatter.category) {
+      edge.node.frontmatter.category.forEach(category => {
+        storeCategorySet.add({
+          name: category,
+          url: `/print-store/${_.kebabCase(category)}/`
+        });
+      });
+    }
+  });
+
+  createPage({
+    path: `/print-store/`,
+    component: store,
+    context: { 
+      category: [`Print Store`],
+      allCategories: storeCategorySet,
+    }
   });
 
   // Post page creating
@@ -208,15 +234,32 @@ exports.createPages = async ({ graphql, actions }) => {
     const nextEdge = productEdges[nextID];
     const prevEdge = productEdges[prevID];
 
+    console.log(edge.node.frontmatter.category)
+
     createPage({
-      path: edge.node.fields.slug,
+      path: `/print-store${edge.node.fields.slug}`,
       component: productPage,
       context: {
+        category: edge.node.frontmatter.category,
         slug: edge.node.fields.slug,
         nexttitle: nextEdge.node.frontmatter.title,
         nextslug: nextEdge.node.fields.slug,
         prevtitle: prevEdge.node.frontmatter.title,
         prevslug: prevEdge.node.fields.slug
+      }
+    });
+  });
+
+  // Create category pages
+  storeCategorySet.forEach(category => {
+    console.log(`creating category page ${category.name}`);
+
+    createPage({
+      path: category.url,
+      component: storeCategory,
+      context: { 
+        category: [category.name],
+        allCategories: storeCategorySet,
       }
     });
   });
@@ -281,7 +324,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Sizes {
-      image: File
       price: String
       size: String
     }
@@ -290,6 +332,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       sections: [Sections]
       sizes: [Sizes]
       social_image: File
+      category: [String]
     }
 
   `
