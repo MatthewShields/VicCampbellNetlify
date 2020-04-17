@@ -3800,7 +3800,7 @@ video {
 }
 
 .font-serif {
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: EB Garamond, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .font-mono {
@@ -11217,35 +11217,35 @@ video {
 }
 
 .text-xs {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .text-sm {
-  font-size: 0.875rem;
-}
-
-.text-base {
   font-size: 1rem;
 }
 
+.text-base {
+  font-size: 1.15rem;
+}
+
 .text-lg {
-  font-size: 1.125rem;
+  font-size: 1.35rem;
 }
 
 .text-xl {
-  font-size: 1.25rem;
-}
-
-.text-2xl {
   font-size: 1.5rem;
 }
 
+.text-2xl {
+  font-size: 1.75rem;
+}
+
 .text-3xl {
-  font-size: 1.875rem;
+  font-size: 2rem;
 }
 
 .text-4xl {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
 }
 
 .text-5xl {
@@ -14134,18 +14134,40 @@ video {
 }
 
 h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   margin-top: 2.5rem;
 }
 
 p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
 }
 
 .block-item p:last-of-type {
   margin-bottom: 0;
+}
+
+.headroom--pinned header {
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.grid-hover:hover > div {
+  opacity: 0.5;
+}
+
+.grid-hover:hover > div:hover {
+  opacity: 1;
+}
+
+.underline {
+  text-underline-position: under
+}
+
+.hover\:underline:hover {
+  text-underline-position: under
 }
 
 @media (min-width: 640px) {
@@ -17320,7 +17342,7 @@ p {
   }
 
   .sm\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: EB Garamond, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .sm\:font-mono {
@@ -24737,35 +24759,35 @@ p {
   }
 
   .sm\:text-xs {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 
   .sm\:text-sm {
-    font-size: 0.875rem;
-  }
-
-  .sm\:text-base {
     font-size: 1rem;
   }
 
+  .sm\:text-base {
+    font-size: 1.15rem;
+  }
+
   .sm\:text-lg {
-    font-size: 1.125rem;
+    font-size: 1.35rem;
   }
 
   .sm\:text-xl {
-    font-size: 1.25rem;
-  }
-
-  .sm\:text-2xl {
     font-size: 1.5rem;
   }
 
+  .sm\:text-2xl {
+    font-size: 1.75rem;
+  }
+
   .sm\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 2rem;
   }
 
   .sm\:text-4xl {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 
   .sm\:text-5xl {
@@ -30826,7 +30848,7 @@ p {
   }
 
   .md\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: EB Garamond, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .md\:font-mono {
@@ -38243,35 +38265,35 @@ p {
   }
 
   .md\:text-xs {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 
   .md\:text-sm {
-    font-size: 0.875rem;
-  }
-
-  .md\:text-base {
     font-size: 1rem;
   }
 
+  .md\:text-base {
+    font-size: 1.15rem;
+  }
+
   .md\:text-lg {
-    font-size: 1.125rem;
+    font-size: 1.35rem;
   }
 
   .md\:text-xl {
-    font-size: 1.25rem;
-  }
-
-  .md\:text-2xl {
     font-size: 1.5rem;
   }
 
+  .md\:text-2xl {
+    font-size: 1.75rem;
+  }
+
   .md\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 2rem;
   }
 
   .md\:text-4xl {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 
   .md\:text-5xl {
@@ -44332,7 +44354,7 @@ p {
   }
 
   .lg\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: EB Garamond, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .lg\:font-mono {
@@ -51749,35 +51771,35 @@ p {
   }
 
   .lg\:text-xs {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 
   .lg\:text-sm {
-    font-size: 0.875rem;
-  }
-
-  .lg\:text-base {
     font-size: 1rem;
   }
 
+  .lg\:text-base {
+    font-size: 1.15rem;
+  }
+
   .lg\:text-lg {
-    font-size: 1.125rem;
+    font-size: 1.35rem;
   }
 
   .lg\:text-xl {
-    font-size: 1.25rem;
-  }
-
-  .lg\:text-2xl {
     font-size: 1.5rem;
   }
 
+  .lg\:text-2xl {
+    font-size: 1.75rem;
+  }
+
   .lg\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 2rem;
   }
 
   .lg\:text-4xl {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 
   .lg\:text-5xl {
@@ -57838,7 +57860,7 @@ p {
   }
 
   .xl\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: EB Garamond, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .xl\:font-mono {
@@ -65255,35 +65277,35 @@ p {
   }
 
   .xl\:text-xs {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 
   .xl\:text-sm {
-    font-size: 0.875rem;
-  }
-
-  .xl\:text-base {
     font-size: 1rem;
   }
 
+  .xl\:text-base {
+    font-size: 1.15rem;
+  }
+
   .xl\:text-lg {
-    font-size: 1.125rem;
+    font-size: 1.35rem;
   }
 
   .xl\:text-xl {
-    font-size: 1.25rem;
-  }
-
-  .xl\:text-2xl {
     font-size: 1.5rem;
   }
 
+  .xl\:text-2xl {
+    font-size: 1.75rem;
+  }
+
   .xl\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 2rem;
   }
 
   .xl\:text-4xl {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 
   .xl\:text-5xl {

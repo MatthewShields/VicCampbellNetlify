@@ -13,7 +13,7 @@ export default function HTML(props) {
         />
         {props.headComponents}
       </head>
-      <body {...props.bodyAttributes}>
+      <body className="font-serif" {...props.bodyAttributes}>
         {props.preBodyComponents}
         <div
           key={`body`}

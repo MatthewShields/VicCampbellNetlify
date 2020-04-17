@@ -151,7 +151,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Josefin Sans:400,700']
+          families: ['EB Garamond:400,500']
         }
       }
     },

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import TextBlock from "../TextBlock/TextBlock";
 import BlockList from "../BlockList/BlockList";
 
@@ -25,11 +25,15 @@ class FlexibleContent extends React.Component {
     let sections = this.props.sections;
     return (
       <div>
-        {sections.map((section, index) => (
-          <div key={section.type+'_'+index}>
-            {this.choose_section(section)}
-          </div>
-        ))}
+        {sections && sections.length > 0 &&
+          <Fragment>
+            {sections.map((section, index) => (
+              <div key={section.type+'_'+index}>
+                {this.choose_section(section)}
+              </div>
+            ))}
+          </Fragment>
+        }
       </div>
     );
   }

@@ -25,22 +25,26 @@ const config = {
     {
       label: "Codepen",
       url: "https://codepen.io/MatthewShields/",
-      target: "_blank"
+      target: "_blank",
+      image: 'instagram'
     },
     {
       label: "GitHub",
       url: "https://github.com/MatthewShields",
-      target: "_blank"
+      target: "_blank",
+      image: 'instagram'
     },
     {
       label: "Twitter",
       url: "https://twitter.com/whatsthatweasel",
-      target: "_blank"
+      target: "_blank",
+      image: 'instagram'
     },
     {
       label: "Email",
       url: "mailto:info@matthewshields.co.uk",
-      target: "_self"
+      target: "_self",
+      image: 'instagram'
     }
   ],
   copyright: "Copyright © 2020 Matthew Shields", // Copyright string for the footer of the website and RSS feed.

@@ -8,11 +8,11 @@ class Footer extends Component {
     const { config } = this.props;
     const url = config.siteRss;
     return (
-      <footer aria-label="Main footer" className="footer">
-        <UserLinks config={config} labeled />
-        <p>
-          <img src="https://api.netlify.com/api/v1/badges/c023a493-a603-4019-9652-8d104b5d36b2/deploy-status" alt="Netlify Build Status"/>
+      <footer aria-label="Main footer" className="text-center mb-8">
+        <p className="text-center uppercase text-sm">
+          <a href="mailto:victoriajscampbell@gmail.com" className="hover:underline">victoriajscampbell@gmail.com</a>
         </p>
+        <UserLinks config={config} labeled />
       </footer>
     );
   }
