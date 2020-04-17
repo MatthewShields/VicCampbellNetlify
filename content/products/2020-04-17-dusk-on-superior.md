@@ -22,7 +22,7 @@ sizes:
     image: dusk-on-superior.jpg
 sections:
   - type: text_block
-    title: A little bit more about the story behind this print
+    title: An optional little bit more about the story behind this print
     text: >-
       Lorem ipsum dolor sit amet, consectetur
       adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus
