@@ -13,11 +13,11 @@ image: grand-marais.jpg
 slug: grand-marais
 sizes:
   - size: 8x10
-    price: '4000'
+    price: 4000
   - size: 11x14
-    price: '6000'
+    price: 6000
   - size: 16x20
-    price: '10000'
+    price: 10000
 sections:
   - type: text_block
     title: An optional little bit more about the story behind this print
