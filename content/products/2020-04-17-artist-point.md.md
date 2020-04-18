@@ -14,13 +14,10 @@ slug: artist-point
 sizes:
   - size: 8x10
     price: '4000'
-    image: artist-point.jpg
   - size: 11x14
     price: '6000'
-    image: artist-point.jpg
   - size: 16x20
     price: '10000'
-    image: artist-point.jpg
 sections:
   - type: text_block
     title: An optional little bit more about the story behind this print
