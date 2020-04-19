@@ -7,30 +7,6 @@ import StoreListing from "../components/StoreListing/StoreListing";
 import Hero from "../components/Hero/Hero";
 import Img from "gatsby-image";
 
-const firepurchase = async (image, name, description, amount, quantity) => {
-  const data = {
-    image: image,
-    name: name,
-    description: description,
-    amount: amount,
-    quantity: quantity,
-    returnURL: window.location.href,
-  };
-  console.log(data);
-  const response = await fetch("/.netlify/functions/create-checkout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  }).then((res) => res.json());
-
-  const stripe = Stripe(response.publishableKey);
-  const { error } = await stripe.redirectToCheckout({
-    sessionId: response.sessionId,
-  });
-};
-
 function price_range_data(sizes) {
   if (sizes && sizes.length > 0) {
     let priceData = {
@@ -60,13 +36,43 @@ export default class PostTemplate extends React.Component {
     this.state = {
       active_product: false,
       quantity: 1,
+      purchasing: false
     };
 
     console.log(this.state.active_product);
 
     this.change_selected_product = this.change_selected_product.bind(this);
     this.change_selected_quantity = this.change_selected_quantity.bind(this);
-    this.change_selected_quantity = this.change_selected_quantity.bind(this);
+    this.firepurchase = this.firepurchase.bind(this);
+  }
+
+  firepurchase = async (image, name, description, amount, quantity) => {
+
+    this.setState({
+      purchasing: true
+    });
+  
+    const data = {
+      image: image,
+      name: name,
+      description: description,
+      amount: amount,
+      quantity: quantity,
+      returnURL: window.location.href,
+    };
+    console.log(data);
+    const response = await fetch("/.netlify/functions/create-checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+  
+    const stripe = Stripe(response.publishableKey);
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: response.sessionId,
+    });
   }
 
   change_selected_product(event) {
@@ -78,15 +84,24 @@ export default class PostTemplate extends React.Component {
   }
 
   change_selected_quantity(event) {
-    console.log(event);
     if (!isNaN(event.target.value)) {
       this.setState({
         quantity: event.target.value,
       });
-    } else {
-      this.setState({
-        quantity: this.state.quantity,
+    }
+  }
+
+  find_price(sizes, active_product) {
+    if (active_product) {
+      let price = false;
+      sizes.forEach((size) => {
+        if (size.size === active_product) {
+          price = size.price;
+        }
       });
+      return price;
+    } else {
+      return false;
     }
   }
 
@@ -167,6 +182,11 @@ export default class PostTemplate extends React.Component {
               </div>
               <div>
                 <h1 className="mb-4 text-2xl">{post.title}</h1>
+                {!this.state.active_product && priceData ? (
+                  <p className="text-lg">From: {(priceData.low / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                ) : (
+                  <p className="text-lg">{(this.find_price(post.sizes, this.state.active_product) / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                )}
                 <p>{post.short_description}</p>
                 <div dangerouslySetInnerHTML={{ __html: post.print_details }} />
                 <div className="sm:grid sm:grid-cols-2 sm:gap-12 md:block lg:grid">
@@ -228,20 +248,20 @@ export default class PostTemplate extends React.Component {
                   </div>
                 </div>
                 <button
-                  className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
+                  className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product && this.state.purchasing === false ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
                   aria-label={`Purchase ${post.title} ${this.state.active_product}`}
                   onClick={() =>
-                    firepurchase(
+                    this.firepurchase(
                       this.image_url(post.sizes, this.state.active_product),
                       post.title + " " + this.state.active_product,
                       post.short_description,
-                      10000,
-                      20
+                      this.find_price(post.sizes, this.state.active_product),
+                      this.state.quantity
                     )
                   }
-                  disabled={(this.state.active_product ? false : true)}
+                  disabled={(this.state.active_product && this.state.purchasing === false ? false : true)}
                 >
-                  Purchase
+                  {(this.state.purchasing === false ? "Purchase" : "Purchasing")}
                 </button>
               </div>
             </div>
@@ -249,9 +269,8 @@ export default class PostTemplate extends React.Component {
             false
           )}
 
-          <div className="max-w-screen-md mx-auto my-12">
-            <FlexibleContent sections={postNode.frontmatter.sections} />
-          </div>
+          <FlexibleContent sections={postNode.frontmatter.sections} />
+          
           <StoreListing
             title={`Other ${category.join(" and ")} Prints`}
             size="lg"

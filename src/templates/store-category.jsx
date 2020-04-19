@@ -21,7 +21,7 @@ export default class CategoryTemplate extends React.Component {
             title={`Posts in category "${category}" | ${config.siteTitle}`}
           />
           <h1 className="text-center text-3xl mb-4">{category}</h1>
-          <div className="text-center mb-12">
+          <div className="text-center mb-24 mx-auto max-w-screen-md">
             <p>
               All prints are premium quality inkjet prints and are printed on
               archival fine art paper – touting gallery quality and outstanding
@@ -45,7 +45,7 @@ export const pageQuery = graphql`
   query CategoryPage($category: [String]) {
     allMarkdownRemark(
       limit: 1000
-      sort: { fields: [frontmatter___title], order: ASC }
+      sort: { fields: [fields___date], order: DESC }
       filter: { frontmatter: { category: { in: $category } } }
     ) {
       totalCount

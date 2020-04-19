@@ -1,4 +1,6 @@
 nav_items:
+  - label: Lifestyle
+    path: /lifestyle/
   - label: About
     path: /about/
   - label: Print Store

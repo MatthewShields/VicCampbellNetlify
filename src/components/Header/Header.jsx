@@ -49,18 +49,19 @@ class Header extends Component {
     return (
       <Headroom className={headerClass}>
         <header className="py-3 bg-white transition-shadow duration-500 ease-in-out shadow-none">
-          <p className="text-center text-4xl my-0 font-normal uppercase">
+          <h3 className="text-center text-4xl my-0 font-normal uppercase">
             <Link to="/">
               Victoria Campbell
             </Link>
-          </p>
+          </h3>
+          <p className="text-center mb-0 text-gray-500 uppercase text-xs">Minnesota Based Food and Lifestyle Photographer</p>
           <nav>
             <button className="md:hidden" onClick={this.toggle_menu}>{buttonText}</button>
             <ul className="main-nav flex justify-center list-none pl-0">
               {YAMLData.nav_items.map((data, index) => {
                 return (
-                  <li key={`content_item_${index}`} className="m-4">
-                    <Link onClick={this.restore_body} to={data.path} className="hover:underline uppercase text-gray-600">
+                  <li key={`content_item_${index}`} className="mx-4 mt-6">
+                    <Link onClick={this.restore_body} to={data.path} className="hover:underline uppercase text-gray-700">
                       {data.label}
                     </Link>
                   </li>

@@ -43,3 +43,9 @@ ul {
     @apply list-disc;
     @apply pl-6;
 }
+
+.avoid-break {
+    -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+          page-break-inside: avoid; /* Firefox */
+               break-inside: avoid; /* IE 10+ */
+}
