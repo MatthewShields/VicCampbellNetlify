@@ -26,7 +26,7 @@ exports.handler = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      sessionId: process.env.STRIPE_PUBLISHABLE_KEY,
+      sessionId: session.id,
       publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
     }),
   };

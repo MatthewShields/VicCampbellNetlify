@@ -66,7 +66,6 @@ export default class PostTemplate extends React.Component {
 
     this.change_selected_product = this.change_selected_product.bind(this);
     this.change_selected_quantity = this.change_selected_quantity.bind(this);
-    this.change_selected_quantity = this.change_selected_quantity.bind(this);
   }
 
   change_selected_product(event) {
@@ -78,15 +77,24 @@ export default class PostTemplate extends React.Component {
   }
 
   change_selected_quantity(event) {
-    console.log(event);
     if (!isNaN(event.target.value)) {
       this.setState({
         quantity: event.target.value,
       });
-    } else {
-      this.setState({
-        quantity: this.state.quantity,
+    }
+  }
+
+  find_price(sizes, active_product) {
+    if (active_product) {
+      let price = false;
+      sizes.forEach((size) => {
+        if (size.size === active_product) {
+          price = size.price;
+        }
       });
+      return price;
+    } else {
+      return false;
     }
   }
 
@@ -167,6 +175,11 @@ export default class PostTemplate extends React.Component {
               </div>
               <div>
                 <h1 className="mb-4 text-2xl">{post.title}</h1>
+                {!this.state.active_product && priceData ? (
+                  <p className="text-lg">From: {(priceData.low / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                ) : (
+                  <p className="text-lg">{(this.find_price(post.sizes, this.state.active_product) / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                )}
                 <p>{post.short_description}</p>
                 <div dangerouslySetInnerHTML={{ __html: post.print_details }} />
                 <div className="sm:grid sm:grid-cols-2 sm:gap-12 md:block lg:grid">
@@ -235,8 +248,8 @@ export default class PostTemplate extends React.Component {
                       this.image_url(post.sizes, this.state.active_product),
                       post.title + " " + this.state.active_product,
                       post.short_description,
-                      10000,
-                      20
+                      this.find_price(post.sizes, this.state.active_product),
+                      this.state.quantity
                     )
                   }
                   disabled={(this.state.active_product ? false : true)}
