@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import TextBlock from "../TextBlock/TextBlock";
 import BlockList from "../BlockList/BlockList";
 import MasonryGrid from "../MasonryGrid/MasonryGrid";
+import MultiColumn from "../MultiColumn/MultiColumn";
 
 class FlexibleContent extends React.Component {
   choose_section(section) {
@@ -24,6 +25,16 @@ class FlexibleContent extends React.Component {
             title={section.title}
             text={section.text}
             images={section.images}
+          />
+        );
+        break;
+      case "multi_column":
+        return (
+          <MultiColumn
+            title={section.title}
+            text={section.text}
+            col_num={section.col_num}
+            columns={section.columns}
           />
         );
         break;

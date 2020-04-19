@@ -66,12 +66,22 @@ collections:
             fields:
               - { label: Title, name: title, widget: string, required: false }
               - { label: Text, name: text, widget: markdown, required: false }
-              - label: 'Blocks'
-                name: blocks
+          - label: 'Multi Column'
+            name: 'multi_column'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - { label: Text, name: text, widget: markdown, required: false }
+              - label: "Number of columns"
+                name: "col_num"
+                widget: "select"
+                options: ["3", "2", "1"]
+              - label: 'Columns'
+                name: columns
                 widget: list
                 fields:
-                  - { label: Title, name: title, widget: string }
-                  - { label: Text, name: text, widget: markdown }
+                  - { label: Title, name: title, widget: string, required: false }
+                  - { label: Text, name: text, widget: markdown, required: false }
   - name: products
     label: "Product"
     folder: "content/products"

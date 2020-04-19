@@ -9,6 +9,7 @@ export default class PostTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
     const { slug } = pageContext;
+    console.log(data);
     const postNode = data.markdownRemark;
     const post = postNode.frontmatter;
 
@@ -16,7 +17,7 @@ export default class PostTemplate extends React.Component {
       <Layout>
         <div>
           <SEO postPath={slug} postNode={postNode} postSEO />
-          <Hero title={post.title} description={post.short_description} cover={postNode.frontmatter.cover} />
+          <h1 className="text-center text-3xl mb-4 font-bold">{post.title}</h1>
           <div className="content-section">
             <FlexibleContent sections={postNode.frontmatter.sections} />
           </div>
@@ -49,6 +50,16 @@ export const pageQuery = graphql`
     type
     title
     text
+  }
+
+  fragment MultiColumn on Sections {
+    type
+    title
+    col_num
+    columns {
+      title
+      text
+    }
   }
 
   fragment BlockList on Sections {
@@ -85,6 +96,7 @@ export const pageQuery = graphql`
           ...TextBlock
           ...Carousel
           ...BlockList
+          ...MultiColumn
         }
       }
       fields {

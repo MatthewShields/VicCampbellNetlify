@@ -100,8 +100,8 @@
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write",
     "format:styles": "prettier '**/*.{css,scss}' --write",
-    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
-    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css"
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css && postcss src/styles/tailwind-whitelist.css -o src/styles/main-whitelist.css",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css && postcss src/styles/tailwind-whitelist.css -o src/styles/main-whitelist.css"
   },
   "remarkConfig": {
     "plugins": [
