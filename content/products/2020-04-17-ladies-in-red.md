@@ -20,6 +20,13 @@ sizes:
     price: '10000'
     image: ladies-in-red.jpg
 sections:
+  - type: block_list
+    title: Ladies in Red Saris Limited Edition Run
+    text: >-
+      There will only be 25 prints of Ladies in Red Saris available. Lorem ipsum
+      dolor sit amet, consectetur adipisicing elit. At culpa nulla veritatis
+      beatae ullam quas repellendus praesentium corporis deserunt ab porro alias
+      debitis voluptatum, dignissimos adipisci, dolor laborum minus hic!
   - type: text_block
     title: An optional little bit more about the story behind this print
     text: >-
@@ -36,11 +43,4 @@ sections:
       nulla veritatis beatae ullam quas repellendus praesentium corporis
       deserunt ab porro alias debitis voluptatum, dignissimos adipisci, dolor
       laborum minus hic!
-  - type: block_list
-    title: Ladies in Red Saris Limited Edition Run
-    text: >-
-      There will only be 25 prints of Ladies in Red Saris available. Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. At culpa nulla veritatis
-      beatae ullam quas repellendus praesentium corporis deserunt ab porro alias
-      debitis voluptatum, dignissimos adipisci, dolor laborum minus hic!
 ---
