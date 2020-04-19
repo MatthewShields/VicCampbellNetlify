@@ -7,30 +7,6 @@ import StoreListing from "../components/StoreListing/StoreListing";
 import Hero from "../components/Hero/Hero";
 import Img from "gatsby-image";
 
-const firepurchase = async (image, name, description, amount, quantity) => {
-  const data = {
-    image: image,
-    name: name,
-    description: description,
-    amount: amount,
-    quantity: quantity,
-    returnURL: window.location.href,
-  };
-  console.log(data);
-  const response = await fetch("/.netlify/functions/create-checkout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  }).then((res) => res.json());
-
-  const stripe = Stripe(response.publishableKey);
-  const { error } = await stripe.redirectToCheckout({
-    sessionId: response.sessionId,
-  });
-};
-
 function price_range_data(sizes) {
   if (sizes && sizes.length > 0) {
     let priceData = {
@@ -60,12 +36,43 @@ export default class PostTemplate extends React.Component {
     this.state = {
       active_product: false,
       quantity: 1,
+      purchasing: false
     };
 
     console.log(this.state.active_product);
 
     this.change_selected_product = this.change_selected_product.bind(this);
     this.change_selected_quantity = this.change_selected_quantity.bind(this);
+    this.firepurchase = this.firepurchase.bind(this);
+  }
+
+  firepurchase = async (image, name, description, amount, quantity) => {
+
+    this.setState({
+      purchasing: true
+    });
+  
+    const data = {
+      image: image,
+      name: name,
+      description: description,
+      amount: amount,
+      quantity: quantity,
+      returnURL: window.location.href,
+    };
+    console.log(data);
+    const response = await fetch("/.netlify/functions/create-checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+  
+    const stripe = Stripe(response.publishableKey);
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: response.sessionId,
+    });
   }
 
   change_selected_product(event) {
@@ -241,10 +248,10 @@ export default class PostTemplate extends React.Component {
                   </div>
                 </div>
                 <button
-                  className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
+                  className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product && this.state.purchasing === false ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
                   aria-label={`Purchase ${post.title} ${this.state.active_product}`}
                   onClick={() =>
-                    firepurchase(
+                    this.firepurchase(
                       this.image_url(post.sizes, this.state.active_product),
                       post.title + " " + this.state.active_product,
                       post.short_description,
@@ -252,9 +259,9 @@ export default class PostTemplate extends React.Component {
                       this.state.quantity
                     )
                   }
-                  disabled={(this.state.active_product ? false : true)}
+                  disabled={(this.state.active_product && this.state.purchasing === false ? false : true)}
                 >
-                  Purchase
+                  {(this.state.purchasing === false ? "Purchase" : "Purchasing")}
                 </button>
               </div>
             </div>
