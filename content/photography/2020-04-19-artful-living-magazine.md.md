@@ -19,7 +19,16 @@ sections:
         text: Image alt text
       - image: dsc_3315-copy.jpg
         text: Image alt text
+      - image: studio-session-al-008.jpg
+        text: Image alt text
     title: Garden Shed Feature
+    text: >-
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
+      veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
+      porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
+      hic!
+  - type: text_block
+    title: Text block
     text: >-
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
       veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
