@@ -331,6 +331,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemarkFrontmatter implements Node {
       sections: [Sections]
       sizes: [Sizes]
+      print_details: String @md
       social_image: File
       category: [String]
     }

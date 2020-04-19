@@ -38,3 +38,8 @@ p {
 .hover\:underline:hover {
     text-underline-position: under
 }
+
+ul {
+    @apply list-disc;
+    @apply pl-6;
+}

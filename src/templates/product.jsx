@@ -168,6 +168,7 @@ export default class PostTemplate extends React.Component {
               <div>
                 <h1 className="mb-4 text-2xl">{post.title}</h1>
                 <p>{post.short_description}</p>
+                <div dangerouslySetInnerHTML={{ __html: post.print_details }} />
                 <div className="sm:grid sm:grid-cols-2 sm:gap-12 md:block lg:grid">
                   <div className="my-6">
                     <label
@@ -227,7 +228,7 @@ export default class PostTemplate extends React.Component {
                   </div>
                 </div>
                 <button
-                  className={`text-white text-center py-4 px-8 block uppercase ${(this.state.active_product ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
+                  className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
                   aria-label={`Purchase ${post.title} ${this.state.active_product}`}
                   onClick={() =>
                     firepurchase(
@@ -308,6 +309,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         short_description
+        print_details
         date
         image {
           childImageSharp {
