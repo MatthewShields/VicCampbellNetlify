@@ -56,7 +56,7 @@ class Header extends Component {
           </p>
           <nav>
             <button className="md:hidden" onClick={this.toggle_menu}>{buttonText}</button>
-            <ul className="main-nav flex justify-center">
+            <ul className="main-nav flex justify-center list-none pl-0">
               {YAMLData.nav_items.map((data, index) => {
                 return (
                   <li key={`content_item_${index}`} className="m-4">

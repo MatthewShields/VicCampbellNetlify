@@ -72,12 +72,6 @@ collections:
                 fields:
                   - { label: Title, name: title, widget: string }
                   - { label: Text, name: text, widget: markdown }
-                  - label: 'Footer List'
-                    name: footer_list
-                    widget: list
-                    fields:
-                      - { label: Label, name: label, widget: string }
-                      - { label: Value, name: value, widget: string }
   - name: products
     label: "Product"
     folder: "content/products"
@@ -89,10 +83,11 @@ collections:
       - { label: "post_type", name: "post_type", widget: "hidden", default: "product" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short Description", name: "short_description", widget: "string" }
+      - { label: "Print Details", name: "print_details", widget: "markdown", required: false }
       - { label: "Category", name: "category", widget: "list" }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Sizes", name: "sizes", widget: list, fields: [ {label: Image, name: image, widget: image}, {label: Size, name: size, widget: string}, {label: Price, name: price, widget: string} ] }
+      - { label: "Sizes", name: "sizes", widget: list, fields: [ {label: Image, name: image, widget: image, required: true}, {label: Size, name: size, widget: string, required: true}, {label: Price, name: price, widget: number, required: true} ] }
       - label: 'Page Section'
         name: 'sections'
         widget: 'list'
@@ -127,12 +122,6 @@ collections:
                 fields:
                   - { label: Title, name: title, widget: string }
                   - { label: Text, name: text, widget: markdown }
-                  - label: 'Footer List'
-                    name: footer_list
-                    widget: list
-                    fields:
-                      - { label: Label, name: label, widget: string }
-                      - { label: Value, name: value, widget: string }
   - name: photography
     label: "Photography"
     folder: "content/photography"

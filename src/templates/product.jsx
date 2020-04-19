@@ -31,7 +31,6 @@ const firepurchase = async (image, name, description, amount, quantity) => {
   });
 };
 
-
 function price_range_data(sizes) {
   if (sizes && sizes.length > 0) {
     let priceData = {
@@ -40,10 +39,10 @@ function price_range_data(sizes) {
     };
 
     sizes.forEach((size) => {
-      if(priceData.low === false || parseInt(size.price, 10) < priceData.low ) {
+      if (priceData.low === false || parseInt(size.price, 10) < priceData.low) {
         priceData.low = parseInt(size.price);
       }
-      if(priceData.high === false || parseInt(size.price) > priceData.high) {
+      if (priceData.high === false || parseInt(size.price) > priceData.high) {
         priceData.high = parseInt(size.price);
       }
     });
@@ -59,13 +58,11 @@ export default class PostTemplate extends React.Component {
     super(props);
 
     this.state = {
-      active_product:
-        props.data.markdownRemark.frontmatter.sizes &&
-        props.data.markdownRemark.frontmatter.sizes.length > 0
-          ? props.data.markdownRemark.frontmatter.sizes[0].size
-          : false,
+      active_product: false,
       quantity: 1,
     };
+
+    console.log(this.state.active_product);
 
     this.change_selected_product = this.change_selected_product.bind(this);
     this.change_selected_quantity = this.change_selected_quantity.bind(this);
@@ -73,6 +70,7 @@ export default class PostTemplate extends React.Component {
   }
 
   change_selected_product(event) {
+    console.log(event);
     this.setState({
       active_product: event.target.value,
       quantity: 1,
@@ -80,6 +78,7 @@ export default class PostTemplate extends React.Component {
   }
 
   change_selected_quantity(event) {
+    console.log(event);
     if (!isNaN(event.target.value)) {
       this.setState({
         quantity: event.target.value,
@@ -91,7 +90,7 @@ export default class PostTemplate extends React.Component {
     }
   }
 
-  display_image(sizes, active_image) {
+  display_image(sizes, active_image, default_image) {
     if (active_image) {
       let image_found = false;
       sizes.forEach((size) => {
@@ -100,17 +99,31 @@ export default class PostTemplate extends React.Component {
         }
       });
       if (image_found === false) {
-        if(sizes[0].image) {
+        if (sizes[0].image) {
           return <Img fluid={sizes[0].image.childImageSharp.fluid} />;
         } else {
-          return false;
+          if(default_image) {
+            return <Img fluid={default_image.childImageSharp.fluid} />;
+          } else {
+            return false;
+          }
         }
       } else {
-        if(image_found.image) {
+        if (image_found.image) {
           return <Img fluid={image_found.image.childImageSharp.fluid} />;
         } else {
-          return false;
+          if(default_image) {
+            return <Img fluid={default_image.childImageSharp.fluid} />;
+          } else {
+            return false;
+          }
         }
+      }
+    } else {
+      if(default_image) {
+        return <Img fluid={default_image.childImageSharp.fluid} />;
+      } else {
+        return false;
       }
     }
   }
@@ -150,11 +163,12 @@ export default class PostTemplate extends React.Component {
           {post.sizes && post.sizes.length > 0 ? (
             <div className="max-w-screen-lg mx-auto grid md:grid-cols-2 gap-12">
               <div>
-                {this.display_image(post.sizes, this.state.active_product)}
+                {this.display_image(post.sizes, this.state.active_product, post.image)}
               </div>
               <div>
                 <h1 className="mb-4 text-2xl">{post.title}</h1>
                 <p>{post.short_description}</p>
+                <div dangerouslySetInnerHTML={{ __html: post.print_details }} />
                 <div className="sm:grid sm:grid-cols-2 sm:gap-12 md:block lg:grid">
                   <div className="my-6">
                     <label
@@ -172,8 +186,13 @@ export default class PostTemplate extends React.Component {
                           onChange={this.change_selected_product}
                           value={this.state.active_product}
                         >
+                          <option value={false} disabled>
+                            Please Select
+                          </option>
                           {post.sizes.map((size) => (
-                            <option key={size.size}>{size.size}</option>
+                            <option key={size.size} value={size.size}>
+                              {size.size}
+                            </option>
                           ))}
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
@@ -187,27 +206,29 @@ export default class PostTemplate extends React.Component {
                         </div>
                       </div>
                     ) : (
-                      <p className="w-full text-gray-700 py-3 leading-tight">{post.sizes[0].size}</p>
+                      <p className="w-full text-gray-700 py-3 leading-tight">
+                        {post.sizes[0].size}
+                      </p>
                     )}
                   </div>
                   <div className="my-6 w-full">
-                  <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    htmlFor="grid-city"
-                  >
-                    Quantity
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="quantity"
-                    type="number"
-                    value={this.state.quantity}
-                    onChange={this.change_selected_quantity}
-                  />
-                </div>
+                    <label
+                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-city"
+                    >
+                      Quantity
+                    </label>
+                    <input
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="quantity"
+                      type="number"
+                      value={this.state.quantity}
+                      onChange={this.change_selected_quantity}
+                    />
+                  </div>
                 </div>
                 <button
-                  className="bg-gray-900 hover:bg-blue-700 focus:bg-blue-700 text-white text-center py-4 px-8 block uppercase"
+                  className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
                   aria-label={`Purchase ${post.title} ${this.state.active_product}`}
                   onClick={() =>
                     firepurchase(
@@ -218,17 +239,24 @@ export default class PostTemplate extends React.Component {
                       20
                     )
                   }
+                  disabled={(this.state.active_product ? false : true)}
                 >
                   Purchase
                 </button>
               </div>
             </div>
-          ) : false }
+          ) : (
+            false
+          )}
 
           <div className="max-w-screen-md mx-auto my-12">
             <FlexibleContent sections={postNode.frontmatter.sections} />
           </div>
-          <StoreListing title={`Other ${category.join(' and ')} Prints`} size="lg" products={relatedProducts} />
+          <StoreListing
+            title={`Other ${category.join(" and ")} Prints`}
+            size="lg"
+            products={relatedProducts}
+          />
         </div>
       </Layout>
     );
@@ -281,6 +309,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         short_description
+        print_details
         date
         image {
           childImageSharp {
@@ -288,6 +317,7 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid_withWebp
             }
           }
+          publicURL
         }
         sizes {
           image {
@@ -314,7 +344,10 @@ export const pageQuery = graphql`
     }
     relatedProducts: allMarkdownRemark(
       limit: 3
-      filter: {frontmatter: { category: { in: $category } }, fields: {slug: {ne: $slug}}}
+      filter: {
+        frontmatter: { category: { in: $category } }
+        fields: { slug: { ne: $slug } }
+      }
     ) {
       edges {
         node {
