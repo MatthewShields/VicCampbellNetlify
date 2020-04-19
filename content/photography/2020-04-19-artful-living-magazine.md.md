@@ -25,4 +25,11 @@ sections:
       veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
       porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
       hic!
+  - type: text_block
+    title: Text block
+    text: >-
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
+      veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
+      porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
+      hic!
 ---
