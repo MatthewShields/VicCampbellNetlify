@@ -6,6 +6,10 @@ short_description: >-
   consectetur adipisicing elit. At culpa nulla veritatis beatae ullam quas
   repellendus praesentium corporis deserunt ab porro alias debitis voluptatum,
   dignissimos adipisci, dolor laborum minus hic!
+print_details: |-
+  * Giclée fine art printing on high quality paper
+  * Matt finish
+  * Full bleed / no border
 category:
   - England
 image: fishing-boats.jpg
