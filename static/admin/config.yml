@@ -132,11 +132,55 @@ collections:
     fields:
       - { label: "post_type", name: "post_type", widget: "hidden", default: "photography" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Short Description", name: "short_description", widget: "string" }
+      - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Cover Images", name: "cover_images", widget: list, fields: [ {label: Photo, name: photo, widget: image}, {label: Image Description, name: alt, widget: string} ] }
-      - { label: "Images", name: "images", widget: list, fields: [ {label: Photo, name: photo, widget: image}, {label: Image Description, name: alt, widget: string} ] }
+      - label: 'Page Section'
+        name: 'sections'
+        widget: 'list'
+        types:
+          - label: 'Text Block'
+            name: 'text_block'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: markdown }
+          - label: 'Carousel'
+            name: 'carousel'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: markdown }
+              - label: 'Images'
+                name: images
+                widget: list
+                fields:
+                  - { label: "Image", name: "image", widget: "image", required: false }
+                  - { label: Image Description, name: alt, widget: string }
+          - label: 'Masonry Grid'
+            name: 'masonry_grid'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - { label: Text, name: text, widget: markdown, required: false }
+              - label: 'Images'
+                name: images
+                widget: list
+                fields:
+                  - { label: Image, name: image, widget: image }
+                  - { label: Alt, name: text, widget: string }
+          - label: 'Block List'
+            name: 'block_list'
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - { label: Text, name: text, widget: markdown, required: false }
+              - label: 'Blocks'
+                name: blocks
+                widget: list
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Text, name: text, widget: markdown }
   - name: project
     label: "Project"
     folder: "content/project"

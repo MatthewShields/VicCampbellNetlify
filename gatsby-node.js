@@ -263,6 +263,38 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     });
   });
+
+
+
+  const photographyPage = path.resolve("./src/templates/photography.jsx");
+
+  var photographyEdges = allPosts.filter(function(post) {
+    return post.node.frontmatter.post_type === 'photography';
+  });
+  // Photography pages creating
+  photographyEdges.forEach((edge, index) => {
+    console.log(`creating photography page`);
+
+    // Create post pages
+    const nextID = index + 1 < photographyEdges.length ? index + 1 : 0;
+    const prevID = index - 1 >= 0 ? index - 1 : photographyEdges.length - 1;
+    const nextEdge = photographyEdges[nextID];
+    const prevEdge = photographyEdges[prevID];
+
+    createPage({
+      path: edge.node.fields.slug,
+      component: photographyPage,
+      context: {
+        slug: edge.node.fields.slug,
+        nexttitle: nextEdge.node.frontmatter.title,
+        nextslug: nextEdge.node.fields.slug,
+        prevtitle: prevEdge.node.frontmatter.title,
+        prevslug: prevEdge.node.fields.slug
+      }
+    });
+  });
+
+
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
