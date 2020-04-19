@@ -15,11 +15,11 @@ sections:
         text: Image alt text
       - image: dsc_3293.jpg
         text: Image alt text
+      - image: studio-session-al-008.jpg
+        text: Image alt text
       - image: dsc_3395.jpg
         text: Image alt text
       - image: dsc_3315-copy.jpg
-        text: Image alt text
-      - image: studio-session-al-008.jpg
         text: Image alt text
     title: Garden Shed Feature
     text: >-
