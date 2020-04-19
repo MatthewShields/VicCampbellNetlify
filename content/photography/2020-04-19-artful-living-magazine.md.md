@@ -55,13 +55,6 @@ sections:
         text: Image Alt Text
       - image: truff.jpg
         text: Image Alt Text
-  - type: text_block
-    title: Text block
-    text: >-
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
-      veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
-      porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
-      hic!
   - type: masonry_grid
     title: Fall 2019 Issue
     text: >-
