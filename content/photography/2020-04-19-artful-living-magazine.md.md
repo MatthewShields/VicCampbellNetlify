@@ -7,6 +7,7 @@ short_description: >-
   alias debitis voluptatum, dignissimos adipisci, dolor laborum minus hic!
 category:
   - Travel
+  - Lifestyle
 slug: artful-living-magazine
 sections:
   - type: masonry_grid
