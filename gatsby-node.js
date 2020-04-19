@@ -377,12 +377,18 @@ exports.createSchemaCustomization = ({ actions }) => {
       footer_list: [BlockFooterList]
     }
 
+    type Column {
+      title: String
+      text: String @md
+    }
+
     type Sections {
       type: String
       title: String
       text: String @md
       images: [CarouselImages]
       blocks: [BlockList]
+      columns: [Column]
     }
 
     type Sizes {

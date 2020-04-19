@@ -5,6 +5,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import "./index.css";
 import '../styles/main.css';
+import '../styles/main-whitelist.css';
 
 export default class MainLayout extends React.Component {
   render() {
