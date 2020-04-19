@@ -133,6 +133,8 @@ collections:
       - { label: "post_type", name: "post_type", widget: "hidden", default: "photography" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short Description", name: "short_description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Category", name: "category", widget: "list" }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Slug", name: "slug", widget: "string" }
       - label: 'Page Section'

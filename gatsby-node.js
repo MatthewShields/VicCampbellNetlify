@@ -364,6 +364,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       sections: [Sections]
       sizes: [Sizes]
       print_details: String @md
+      body: String @md
       social_image: File
       category: [String]
     }

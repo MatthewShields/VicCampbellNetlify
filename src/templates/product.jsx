@@ -262,9 +262,8 @@ export default class PostTemplate extends React.Component {
             false
           )}
 
-          <div className="max-w-screen-md mx-auto my-12">
-            <FlexibleContent sections={postNode.frontmatter.sections} />
-          </div>
+          <FlexibleContent sections={postNode.frontmatter.sections} />
+          
           <StoreListing
             title={`Other ${category.join(" and ")} Prints`}
             size="lg"

@@ -17,7 +17,13 @@ export default class PostTemplate extends React.Component {
       <Layout>
         <div>
           <SEO postPath={slug} postNode={postNode} postSEO />
-          <Hero title={post.title} description={post.short_description} cover={postNode.frontmatter.cover} />
+          <h1 className="text-center text-3xl mb-4 font-bold">{post.title}</h1>
+          {postNode.html && postNode.html.length > 2 &&
+            <div
+              className="text-center mb-24 mx-auto max-w-screen-md"
+              dangerouslySetInnerHTML={{ __html: postNode.html }}
+            />
+          }
           <div className="content-section">
             <FlexibleContent sections={postNode.frontmatter.sections} />
           </div>
@@ -29,7 +35,6 @@ export default class PostTemplate extends React.Component {
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-
   fragment CarouselPhoto on Sections {
     type
     title
@@ -86,6 +91,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         short_description
+        body
         date
         cover {
           childImageSharp {

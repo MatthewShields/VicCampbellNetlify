@@ -45,7 +45,7 @@ export default class CategoryTemplate extends React.Component {
 export const pageQuery = graphql`
   query StorePage {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___title], order: ASC }
+      sort: { fields: [fields___date], order: DESC }
       filter: {fileAbsolutePath: {regex: "/(products)/.*\\.md$/"}}
     ) {
       totalCount

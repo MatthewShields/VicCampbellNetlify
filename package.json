@@ -57,6 +57,7 @@
     "react-share": "^3.0.1",
     "react-twitter-widgets": "^1.7.1",
     "remark-html": "^11.0.1",
+    "simple-react-lightbox": "^2.7.0",
     "stripe": "^8.41.0",
     "url-join": "^4.0.0"
   },
