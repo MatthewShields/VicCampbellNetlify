@@ -31,6 +31,30 @@ sections:
       veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
       porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
       hic!
+  - type: masonry_grid
+    title: Style Guide Feature
+    text: >-
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
+      veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
+      porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
+      hic!
+
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
+      veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
+      porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
+      hic!
+    images:
+      - image: brightland-carrots.jpg
+        text: Image Alt Text
+      - image: madre-grapefruit.jpg
+        text: Image Alt Text
+      - image: unalou.jpg
+        text: Image Alt Text
+      - image: wonder-valley-olive-oil.jpg
+        text: Image Alt Text
+      - image: truff.jpg
+        text: Image Alt Text
   - type: text_block
     title: Text block
     text: >-
