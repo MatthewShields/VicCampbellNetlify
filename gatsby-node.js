@@ -267,10 +267,26 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
   const photographyPage = path.resolve("./src/templates/photography.jsx");
+  const photographyCategoryPage = path.resolve("./src/templates/photography-category.jsx");
+  const photographyCategorySet = new Set();
 
   var photographyEdges = allPosts.filter(function(post) {
     return post.node.frontmatter.post_type === 'photography';
   });
+
+  // Post page creating
+  photographyEdges.forEach((edge, index) => {
+    console.log(edge);
+    if (edge.node.frontmatter.category) {
+      edge.node.frontmatter.category.forEach(category => {
+        photographyCategorySet.add({
+          name: category,
+          url: `${_.kebabCase(category)}/`
+        });
+      });
+    }
+  });
+
   // Photography pages creating
   photographyEdges.forEach((edge, index) => {
     console.log(`creating photography page`);
@@ -290,6 +306,20 @@ exports.createPages = async ({ graphql, actions }) => {
         nextslug: nextEdge.node.fields.slug,
         prevtitle: prevEdge.node.frontmatter.title,
         prevslug: prevEdge.node.fields.slug
+      }
+    });
+  });
+
+  // Create category pages
+  photographyCategorySet.forEach(category => {
+    console.log(`creating category page ${category.name}`);
+
+    createPage({
+      path: category.url,
+      component: photographyCategoryPage,
+      context: { 
+        category: [category.name],
+        allCategories: photographyCategorySet,
       }
     });
   });
