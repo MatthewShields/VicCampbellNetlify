@@ -32,7 +32,7 @@ sections:
       porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
       hic!
   - type: masonry_grid
-    title: Fall 2019 Issue
+    title: Style Guide Feature
     text: >-
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
       veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
