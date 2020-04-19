@@ -13,11 +13,14 @@ image: hungry-cow.jpg
 slug: hungry-cow
 sizes:
   - size: 8x10
-    price: 4000
+    price: '4000'
+    image: hungry-cow.jpg
   - size: 11x14
-    price: 6000
+    price: '6000'
+    image: hungry-cow.jpg
   - size: 16x20
-    price: 10000
+    price: '10000'
+    image: hungry-cow.jpg
 sections:
   - type: text_block
     title: An optional little bit more about the story behind this print

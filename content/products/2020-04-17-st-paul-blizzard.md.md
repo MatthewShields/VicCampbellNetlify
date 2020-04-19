@@ -12,13 +12,17 @@ image: st-paul-blizzard.jpg
 slug: st-paul-blizzard
 sizes:
   - size: 8x10
-    price: 4000
+    price: '4000'
+    image: st-paul-blizzard.jpg
   - size: 11x14
-    price: 6000
+    price: '6000'
+    image: st-paul-blizzard.jpg
   - size: 16x20
-    price: 10000
+    price: '10000'
+    image: st-paul-blizzard.jpg
   - size: 24x36
-    price: 20000
+    price: '20000'
+    image: st-paul-blizzard.jpg
 sections:
   - type: text_block
     title: A little bit more about this snowy day
