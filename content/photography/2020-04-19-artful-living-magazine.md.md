@@ -8,6 +8,7 @@ short_description: >-
 category:
   - Travel
   - Lifestyle
+image: brightland-carrots.jpg
 slug: artful-living-magazine
 sections:
   - type: masonry_grid
