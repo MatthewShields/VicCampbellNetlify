@@ -11,6 +11,14 @@ sections:
     images:
       - image: dsc_3594.jpg
         text: Outside shot of garden shed
+      - image: dsc_3301.jpg
+        text: Image alt text
+      - image: dsc_3293.jpg
+        text: Image alt text
+      - image: dsc_3395.jpg
+        text: Image alt text
+      - image: dsc_3315-copy.jpg
+        text: Image alt text
     title: Garden Shed Feature
     text: >-
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
