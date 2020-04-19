@@ -62,4 +62,22 @@ sections:
       veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
       porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
       hic!
+  - type: masonry_grid
+    title: Fall 2019 Issue
+    text: >-
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
+      veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
+      porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
+      hic!
+    images:
+      - image: dsc_4551.jpg
+        text: Image Alt Text
+      - image: dsc_4599.jpg
+        text: Image Alt Text
+      - image: dsc_4627.jpg
+        text: Image Alt Text
+      - image: dsc_4646.jpg
+        text: Image Alt Text
+      - image: dsc_4701.jpg
+        text: Image Alt Text
 ---
