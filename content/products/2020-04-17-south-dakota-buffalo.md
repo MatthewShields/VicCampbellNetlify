@@ -15,6 +15,7 @@ category:
   - Wildlife
 image: south-dakota-buffalo.jpg
 slug: south-dakota-buffalo
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

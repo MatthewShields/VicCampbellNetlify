@@ -14,6 +14,7 @@ category:
   - Limited Run
 image: vietnamese-lady.jpg
 slug: vietnamese-lady
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../layout";
 import SEO from "../components/SEO/SEO";
@@ -182,87 +182,107 @@ export default class PostTemplate extends React.Component {
               </div>
               <div>
                 <h1 className="mb-4 text-2xl">{post.title}</h1>
-                {!this.state.active_product && priceData ? (
-                  <p className="text-lg">From: {(priceData.low / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                {post.sold_out === true && priceData ? (
+                  <Fragment>
+                    <p className="text-lg"><del>From: {(priceData.low / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</del> - Sold Out</p>
+                  </Fragment>
                 ) : (
-                  <p className="text-lg">{(this.find_price(post.sizes, this.state.active_product) / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                  <Fragment>
+                    {!this.state.active_product && priceData ? (
+                      <p className="text-lg">From: {(priceData.low / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                    ) : (
+                      <p className="text-lg">{(this.find_price(post.sizes, this.state.active_product) / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                    )}
+                  </Fragment>
                 )}
                 <p>{post.short_description}</p>
                 <div dangerouslySetInnerHTML={{ __html: post.print_details }} />
-                <div className="sm:grid sm:grid-cols-2 sm:gap-12 md:block lg:grid">
-                  <div className="my-6">
-                    <label
-                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="grid-city"
-                    >
-                      Size
-                    </label>
-                    {post.sizes && post.sizes.length > 1 ? (
-                      <div className="relative">
-                        <select
-                          className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                          name="product-sizes"
-                          id="product-sizes"
-                          onChange={this.change_selected_product}
-                          value={this.state.active_product}
+                {post.sold_out !== true ? (
+                  <div>
+                    <div className="sm:grid sm:grid-cols-2 sm:gap-12 md:block lg:grid">
+                      <div className="my-6">
+                        <label
+                          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                          htmlFor="grid-city"
                         >
-                          <option value={false} disabled>
-                            Please Select
-                          </option>
-                          {post.sizes.map((size) => (
-                            <option key={size.size} value={size.size}>
-                              {size.size}
-                            </option>
-                          ))}
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
-                          <svg
-                            className="fill-current h-4 w-4"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                          </svg>
-                        </div>
+                          Size
+                        </label>
+                        {post.sizes && post.sizes.length > 1 ? (
+                          <div className="relative">
+                            <select
+                              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              name="product-sizes"
+                              id="product-sizes"
+                              onChange={this.change_selected_product}
+                              value={this.state.active_product}
+                            >
+                              <option value={false} disabled>
+                                Please Select
+                              </option>
+                              {post.sizes.map((size) => (
+                                <option key={size.size} value={size.size}>
+                                  {size.size}
+                                </option>
+                              ))}
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                              <svg
+                                className="fill-current h-4 w-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                              >
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                              </svg>
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="w-full text-gray-700 py-3 leading-tight">
+                            {post.sizes[0].size}
+                          </p>
+                        )}
                       </div>
-                    ) : (
-                      <p className="w-full text-gray-700 py-3 leading-tight">
-                        {post.sizes[0].size}
-                      </p>
-                    )}
-                  </div>
-                  <div className="my-6 w-full">
-                    <label
-                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="grid-city"
+                      <div className="my-6 w-full">
+                        <label
+                          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                          htmlFor="grid-city"
+                        >
+                          Quantity
+                        </label>
+                        <input
+                          className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          id="quantity"
+                          type="number"
+                          value={this.state.quantity}
+                          onChange={this.change_selected_quantity}
+                        />
+                      </div>
+                    </div>
+                    <button
+                      className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product && this.state.purchasing === false ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
+                      aria-label={`Purchase ${post.title} ${this.state.active_product}`}
+                      onClick={() =>
+                        this.firepurchase(
+                          this.image_url(post.sizes, this.state.active_product),
+                          post.title + " " + this.state.active_product,
+                          post.short_description,
+                          this.find_price(post.sizes, this.state.active_product),
+                          this.state.quantity
+                        )
+                      }
+                      disabled={(this.state.active_product && this.state.purchasing === false ? false : true)}
                     >
-                      Quantity
-                    </label>
-                    <input
-                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      id="quantity"
-                      type="number"
-                      value={this.state.quantity}
-                      onChange={this.change_selected_quantity}
-                    />
+                      {(this.state.purchasing === false ? "Purchase" : "Purchasing")}
+                    </button>
                   </div>
-                </div>
-                <button
-                  className={`transition duration-200 text-white text-center py-4 px-8 block uppercase ${(this.state.active_product && this.state.purchasing === false ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
-                  aria-label={`Purchase ${post.title} ${this.state.active_product}`}
-                  onClick={() =>
-                    this.firepurchase(
-                      this.image_url(post.sizes, this.state.active_product),
-                      post.title + " " + this.state.active_product,
-                      post.short_description,
-                      this.find_price(post.sizes, this.state.active_product),
-                      this.state.quantity
-                    )
-                  }
-                  disabled={(this.state.active_product && this.state.purchasing === false ? false : true)}
-                >
-                  {(this.state.purchasing === false ? "Purchase" : "Purchasing")}
-                </button>
+                ) : (
+                  <button
+                    className={`transition duration-200 text-white text-center mt-8 py-4 px-8 block uppercase ${(this.state.active_product && this.state.purchasing === false ? "hover:bg-blue-700 focus:bg-blue-700 bg-gray-900" : "bg-gray-400")}`}
+                    aria-label={`${post.title} sold out`}
+                    disabled={true}
+                  >
+                    Sold Out
+                  </button>
+                ) }
               </div>
             </div>
           ) : (
@@ -338,6 +358,7 @@ export const pageQuery = graphql`
           }
           publicURL
         }
+        sold_out
         sizes {
           image {
             childImageSharp {
@@ -364,7 +385,7 @@ export const pageQuery = graphql`
     relatedProducts: allMarkdownRemark(
       limit: 3
       filter: {
-        frontmatter: { category: { in: $category } }
+        frontmatter: { category: { in: $category }, sold_out: { ne: true } }
         fields: { slug: { ne: $slug } }
       }
     ) {
@@ -381,6 +402,7 @@ export const pageQuery = graphql`
                 }
               }
             }
+            sold_out
             sizes {
               size
               price

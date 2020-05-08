@@ -15,6 +15,7 @@ category:
   - Wildlife
 image: hungry-cow.jpg
 slug: hungry-cow
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

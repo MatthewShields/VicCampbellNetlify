@@ -14,6 +14,7 @@ category:
   - England
 image: biscuiteers.jpg
 slug: biscuiteers
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

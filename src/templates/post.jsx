@@ -38,13 +38,6 @@ export const pageQuery = graphql`
         title
         short_description
         date
-        cover {
-          childImageSharp {
-            fluid(maxHeight: 700, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
         social_image {
           childImageSharp {
             fluid(maxHeight: 700, quality: 100) {

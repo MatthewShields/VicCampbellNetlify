@@ -14,6 +14,7 @@ category:
   - Travel
 image: life-in-san-pedro.jpg
 slug: life-in-san-pedro
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

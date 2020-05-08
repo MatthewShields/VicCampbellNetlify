@@ -60,7 +60,7 @@ class Header extends Component {
             <ul className="main-nav flex justify-center list-none pl-0">
               {YAMLData.nav_items.map((data, index) => {
                 return (
-                  <li key={`content_item_${index}`} className="mx-4 mt-6">
+                  <li key={`content_item_${index}`} className="mx-4 mt-6 mb-0">
                     <Link onClick={this.restore_body} to={data.path} className="hover:underline uppercase text-gray-700">
                       {data.label}
                     </Link>

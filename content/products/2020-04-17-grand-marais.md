@@ -15,6 +15,7 @@ category:
   - Landscape
 image: grand-marais.jpg
 slug: grand-marais
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

@@ -15,6 +15,7 @@ category:
   - Wildlife
 image: bison-on-the-plains.jpg
 slug: bison-on-the-plains
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'
