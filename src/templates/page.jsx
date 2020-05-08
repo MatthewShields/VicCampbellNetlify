@@ -17,7 +17,7 @@ export default class PostTemplate extends React.Component {
       <Layout>
         <div>
           <SEO postPath={slug} postNode={postNode} postSEO />
-          <h1 className="text-center text-3xl mb-4 font-bold">{post.title}</h1>
+          <h1 className="text-center text-3xl mb-4">{post.title}</h1>
           <div className="content-section">
             <FlexibleContent sections={postNode.frontmatter.sections} />
           </div>
