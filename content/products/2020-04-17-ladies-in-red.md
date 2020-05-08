@@ -13,6 +13,7 @@ category:
   - Limited Run
 image: ladies-in-red.jpg
 slug: ladies-in-red
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

@@ -30,7 +30,7 @@ export default class PostTemplate extends React.Component {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
 
-  fragment Carousel on Sections {
+  fragment CarouselPage on Sections {
     type
     title
     text
@@ -46,13 +46,13 @@ export const pageQuery = graphql`
     }
   }
 
-  fragment TextBlock on Sections {
+  fragment TextBlockPage on Sections {
     type
     title
     text
   }
 
-  fragment MultiColumn on Sections {
+  fragment MultiColumnPage on Sections {
     type
     title
     col_num
@@ -62,17 +62,13 @@ export const pageQuery = graphql`
     }
   }
 
-  fragment BlockList on Sections {
+  fragment BlockListPage on Sections {
     type
     title
     text
     blocks {
       title
       text
-      footer_list {
-        label
-        value
-      }
     }
   }
 
@@ -85,18 +81,11 @@ export const pageQuery = graphql`
         title
         short_description
         date
-        cover {
-          childImageSharp {
-            fluid(maxHeight: 700, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
         sections {
-          ...TextBlock
-          ...Carousel
-          ...BlockList
-          ...MultiColumn
+          ...TextBlockPage
+          ...CarouselPage
+          ...BlockListPage
+          ...MultiColumnPage
         }
       }
       fields {

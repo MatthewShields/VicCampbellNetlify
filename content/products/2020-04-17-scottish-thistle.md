@@ -13,6 +13,7 @@ category:
   - Foilage
 image: scottish-thistle.jpg
 slug: scottish-thistle
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

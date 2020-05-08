@@ -65,6 +65,15 @@ exports.createPages = async ({ graphql, actions }) => {
               title
               date
               category
+              sections {
+                type
+                title
+                col_num
+                columns {
+                  title
+                  text
+                }
+              }
             }
           }
         }
@@ -82,9 +91,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allPosts = markdownQueryResult.data.allMarkdownRemark.edges;
 
-  // var postsEdges = allPosts.filter(function(post) {
-  //   return post.node.frontmatter.post_type === 'post';
-  // });
+  var postsEdges = allPosts.filter(function(post) {
+    return post.node.frontmatter.post_type === "post";
+  });
 
   // // Sort posts
   // postsEdges.sort((postA, postB) => {
@@ -121,49 +130,49 @@ exports.createPages = async ({ graphql, actions }) => {
   //   });
   // });
 
-  // // Post page creating
-  // postsEdges.forEach((edge, index) => {
-  //   // Generate a list of tags
-  //   if (edge.node.frontmatter.tags) {
-  //     edge.node.frontmatter.tags.forEach(tag => {
-  //       tagSet.add(tag);
-  //     });
-  //   }
+  // Post page creating
+  postsEdges.forEach((edge, index) => {
+    // Generate a list of tags
+    if (edge.node.frontmatter.tags) {
+      edge.node.frontmatter.tags.forEach((tag) => {
+        tagSet.add(tag);
+      });
+    }
 
-  //   // Generate a list of categories
-  //   if (edge.node.frontmatter.category) {
-  //     categorySet.add(edge.node.frontmatter.category);
-  //   }
+    // Generate a list of categories
+    if (edge.node.frontmatter.category) {
+      categorySet.add(edge.node.frontmatter.category);
+    }
 
-  //   // Create post pages
-  //   const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-  //   const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-  //   const nextEdge = postsEdges[nextID];
-  //   const prevEdge = postsEdges[prevID];
+    // Create post pages
+    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
+    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
+    const nextEdge = postsEdges[nextID];
+    const prevEdge = postsEdges[prevID];
 
-  //   createPage({
-  //     path: edge.node.fields.slug,
-  //     component: postPage,
-  //     context: {
-  //       slug: edge.node.fields.slug,
-  //       nexttitle: nextEdge.node.frontmatter.title,
-  //       nextslug: nextEdge.node.fields.slug,
-  //       prevtitle: prevEdge.node.frontmatter.title,
-  //       prevslug: prevEdge.node.fields.slug
-  //     }
-  //   });
-  // });
+    createPage({
+      path: edge.node.fields.slug,
+      component: postPage,
+      context: {
+        slug: edge.node.fields.slug,
+        nexttitle: nextEdge.node.frontmatter.title,
+        nextslug: nextEdge.node.fields.slug,
+        prevtitle: prevEdge.node.frontmatter.title,
+        prevslug: prevEdge.node.fields.slug,
+      },
+    });
+  });
 
   var pageEdges = allPosts.filter(function(post) {
-    return post.node.frontmatter.post_type === 'page';
+    return post.node.frontmatter.post_type === "page";
   });
 
   // Post page creating
   pageEdges.forEach((edge, index) => {
-    console.log('creating a page');
+    console.log("creating a page");
     // Generate a list of tags
     if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.forEach(tag => {
+      edge.node.frontmatter.tags.forEach((tag) => {
         tagSet.add(tag);
       });
     }
@@ -189,8 +198,8 @@ exports.createPages = async ({ graphql, actions }) => {
         nexttitle: nextEdge.node.frontmatter.title,
         nextslug: nextEdge.node.fields.slug,
         prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug
-      }
+        prevslug: prevEdge.node.fields.slug,
+      },
     });
   });
 
@@ -199,17 +208,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const storeCategorySet = new Set();
 
   var productEdges = allPosts.filter(function(post) {
-    return post.node.frontmatter.post_type === 'product';
+    return post.node.frontmatter.post_type === "product";
   });
 
   // Post page creating
   productEdges.forEach((edge, index) => {
     console.log(edge);
     if (edge.node.frontmatter.category) {
-      edge.node.frontmatter.category.forEach(category => {
+      edge.node.frontmatter.category.forEach((category) => {
         storeCategorySet.add({
           name: category,
-          url: `/print-store/${_.kebabCase(category)}/`
+          url: `/print-store/${_.kebabCase(category)}/`,
         });
       });
     }
@@ -218,15 +227,15 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `/print-store/`,
     component: store,
-    context: { 
+    context: {
       category: [`Print Store`],
       allCategories: storeCategorySet,
-    }
+    },
   });
 
   // Post page creating
   productEdges.forEach((edge, index) => {
-    console.log('creating a product page');
+    console.log("creating a product page");
 
     // Create post pages
     const nextID = index + 1 < productEdges.length ? index + 1 : 0;
@@ -234,7 +243,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const nextEdge = productEdges[nextID];
     const prevEdge = productEdges[prevID];
 
-    console.log(edge.node.frontmatter.category)
+    console.log(edge.node.frontmatter.category);
 
     createPage({
       path: `/print-store${edge.node.fields.slug}`,
@@ -245,43 +254,43 @@ exports.createPages = async ({ graphql, actions }) => {
         nexttitle: nextEdge.node.frontmatter.title,
         nextslug: nextEdge.node.fields.slug,
         prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug
-      }
+        prevslug: prevEdge.node.fields.slug,
+      },
     });
   });
 
   // Create category pages
-  storeCategorySet.forEach(category => {
+  storeCategorySet.forEach((category) => {
     console.log(`creating category page ${category.name}`);
 
     createPage({
       path: category.url,
       component: storeCategory,
-      context: { 
+      context: {
         category: [category.name],
         allCategories: storeCategorySet,
-      }
+      },
     });
   });
 
-
-
   const photographyPage = path.resolve("./src/templates/photography.jsx");
-  const photographyCategoryPage = path.resolve("./src/templates/photography-category.jsx");
+  const photographyCategoryPage = path.resolve(
+    "./src/templates/photography-category.jsx"
+  );
   const photographyCategorySet = new Set();
 
   var photographyEdges = allPosts.filter(function(post) {
-    return post.node.frontmatter.post_type === 'photography';
+    return post.node.frontmatter.post_type === "photography";
   });
 
   // Post page creating
   photographyEdges.forEach((edge, index) => {
     console.log(edge);
     if (edge.node.frontmatter.category) {
-      edge.node.frontmatter.category.forEach(category => {
+      edge.node.frontmatter.category.forEach((category) => {
         photographyCategorySet.add({
           name: category,
-          url: `${_.kebabCase(category)}/`
+          url: `${_.kebabCase(category)}/`,
         });
       });
     }
@@ -305,26 +314,24 @@ exports.createPages = async ({ graphql, actions }) => {
         nexttitle: nextEdge.node.frontmatter.title,
         nextslug: nextEdge.node.fields.slug,
         prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug
-      }
+        prevslug: prevEdge.node.fields.slug,
+      },
     });
   });
 
   // Create category pages
-  photographyCategorySet.forEach(category => {
+  photographyCategorySet.forEach((category) => {
     console.log(`creating category page ${category.name}`);
 
     createPage({
       path: category.url,
       component: photographyCategoryPage,
-      context: { 
+      context: {
         category: [category.name],
         allCategories: photographyCategorySet,
-      }
+      },
     });
   });
-
-
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
@@ -347,18 +354,17 @@ exports.createSchemaCustomization = ({ actions }) => {
             args,
             context,
             info
-          )
+          );
           const shouldSanitize =
-            args.sanitize != null ? args.sanitize : options.sanitize
-          const processor = remark().use(html, { sanitize: shouldSanitize })
-          return processor.processSync(fieldValue).contents
+            args.sanitize != null ? args.sanitize : options.sanitize;
+          const processor = remark().use(html, { sanitize: shouldSanitize });
+          return processor.processSync(fieldValue).contents;
         },
-      }
+      };
     },
-  })
+  });
 
-
-  const { createTypes } = actions
+  const { createTypes } = actions;
   const typeDefs = `
 
     type CarouselImages {
@@ -377,12 +383,16 @@ exports.createSchemaCustomization = ({ actions }) => {
       footer_list: [BlockFooterList]
     }
 
-    type Column {
+    type ColumnText implements Node {
+      body: String
+    }
+
+    type Column implements Node {
       title: String
       text: String @md
     }
 
-    type Sections {
+    type Sections implements Node {
       type: String
       title: String
       text: String @md
@@ -398,6 +408,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type MarkdownRemarkFrontmatter implements Node {
       sections: [Sections]
+      sold_out: Boolean
       sizes: [Sizes]
       print_details: String @md
       body: String @md
@@ -405,6 +416,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       category: [String]
     }
 
-  `
-  createTypes(typeDefs)
-}
+  `;
+  createTypes(typeDefs);
+};

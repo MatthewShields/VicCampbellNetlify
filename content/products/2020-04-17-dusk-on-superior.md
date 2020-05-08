@@ -14,6 +14,7 @@ category:
   - Landscape
 image: dusk-on-superior.jpg
 slug: dusk-on-superior
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

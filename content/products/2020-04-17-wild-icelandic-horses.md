@@ -15,6 +15,7 @@ category:
   - Wildlife
 image: wild-icelandic-horses.jpg
 slug: wild-icelandic-horses
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

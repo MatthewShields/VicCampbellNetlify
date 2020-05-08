@@ -94,13 +94,6 @@ export const pageQuery = graphql`
         short_description
         body
         date
-        cover {
-          childImageSharp {
-            fluid(maxHeight: 700, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
         sections {
           ...TextBlockPhoto
           ...CarouselPhoto

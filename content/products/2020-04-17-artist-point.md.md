@@ -15,6 +15,7 @@ category:
   - Landscape
 image: artist-point.jpg
 slug: artist-point
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

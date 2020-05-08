@@ -14,6 +14,7 @@ category:
   - Minnesota
 image: st-paul-blizzard.jpg
 slug: st-paul-blizzard
+sold_out: false
 sizes:
   - size: 8x10
     price: '4000'

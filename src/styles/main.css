@@ -14897,6 +14897,10 @@ ul {
   padding-left: 1.5rem;
 }
 
+li {
+  margin-bottom: 0.5rem;
+}
+
 .avoid-break {
   -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
   page-break-inside: avoid; /* Firefox */
