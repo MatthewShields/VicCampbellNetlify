@@ -20,7 +20,7 @@ class ImageGrid extends React.Component {
                     <Img
                       fluid={product.node.frontmatter.image.childImageSharp.fluid}
                     />
-                    <h3 className="text-lg mt-4">{product.node.frontmatter.title}</h3>
+                    <h3 className="text-lg mt-4 font-normal">{product.node.frontmatter.title}</h3>
                   </Link>
                 </div>
               ))}

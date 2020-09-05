@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 
 function multiDimensionalUnique(arr) {
   arr.sort(sortFunction);
@@ -27,7 +27,8 @@ class StoreCategories extends React.Component {
 
   onChange = (e) => {
     // this.props.history.push(`/${e.target.value}`);
-    history.pushState(false, false, `/${e.target.value}`);
+    navigate(e.target.value);
+    console.log(e.target.value);
   }
 
   render() {
@@ -56,9 +57,10 @@ class StoreCategories extends React.Component {
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               name="filter-categories"
               id="filter-categories"
+              onChange={this.onChange}
             >
               {cats_unique.map((cat) => (
-                <option key={cat.url}>{cat.name}</option>
+                <option key={cat.url} value={cat.url} selected={(this.props.active_category === cat.name ? true : false)}>{cat.name}</option>
               ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">

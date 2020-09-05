@@ -12,6 +12,7 @@ export default class CategoryTemplate extends React.Component {
   render() {
     const { category, allCategories } = this.props.pageContext;
     const productEdges = this.props.data.allMarkdownRemark.edges;
+    console.log(category);
     console.log(this.props.pageContext);
     console.log(productEdges);
     return (
@@ -32,7 +33,7 @@ export default class CategoryTemplate extends React.Component {
               No Kid Hungry</strong>
             </p>
           </div>
-          <StoreCategories categories={allCategories} active_category={category} />
+          <StoreCategories categories={allCategories} active_category={category[0]} />
           <StoreListing products={productEdges} />
         </div>
       </Layout>

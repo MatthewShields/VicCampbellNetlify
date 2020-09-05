@@ -49,7 +49,7 @@ class Header extends Component {
     return (
       <Headroom className={headerClass}>
         <header className="py-3 bg-white transition-shadow duration-500 ease-in-out shadow-none">
-          <h3 className="text-center text-4xl my-0 font-normal uppercase">
+          <h3 className="site-name text-center text-4xl my-0 font-normal uppercase">
             <Link to="/">
               Victoria Campbell
             </Link>
